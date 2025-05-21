@@ -40,6 +40,10 @@ header .contenidor .opcions .menu a {
   color: inherit;
   margin-right: 25px;
 }
+.logo{
+  width: 200px;
+  height: auto;
+}
 
 .pagina-activa {
   color: #4caf50 !important; /* verd sostenible */
@@ -54,34 +58,74 @@ body .contenidor {
   width: 1200px;
 }
 
-/* Centrar la capçalera */
-.cabecera {
-  text-align: center;
-  padding: 30px 20px;
-  background-color: #e0f2f1;
-  border-bottom: 2px solid #a5d6a7;
+body section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Estil pel h1 */
-.cabecera h1 {
-  font-size: 2.5em;
-  color: #2e7d32;
+body section article {
+  width: 50%;
+  font-weight: 500;
+  font-size: 1.3rem;
+  letter-spacing: -0.003em;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+body section article h3 {
+  font-size: 1.8rem;
+  color: #4caf50; /* verd sostenible */
   margin-bottom: 20px;
 }
 
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #4caf50; /* verde sostenible 💚 */
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  margin: 0 5px;
-  transition: background-color 0.3s;
+body section img {
+  max-width: auto;
+  height: 350px;
+  border-radius: 50%;
 }
 
-.btn:hover {
-  background-color: black;
+body section.horizontal {
+  position: relative;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 15px 0;
+}
+
+body section.horizontal article img {
+  border-radius: 0;
+  height: 100px;
+}
+
+body section.horizontal article,
+body section.horizontal article a {
+  color: #062743;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+body section.horizontal article h4 {
+  font-size: 1.7rem;
+  color: #062743;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+body section.horizontal article .img-lateral {
+  display: flex;
+  gap: 15px;
+}
+
+body section.horizontal::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  /* vw para ventana horizontal vh para vertical */
+  width: 100vw;
+  height: 100%;
+  background: #ffb727;
+  z-index: -1;
 }
 
 #mapa {

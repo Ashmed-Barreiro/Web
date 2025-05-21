@@ -1,46 +1,89 @@
 <!DOCTYPE html>
 <html lang="ca">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Catalunya Sostenible</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <link rel="stylesheet" href="/styles/styles.css" />
-  <link rel="shortcut icon" href="/img/CATALUNYA_SOSTENIBLE.png" type="image/x-icon" />
-  <script src="/controllers/compartit.js" defer></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalunya Sostenible</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link
+      rel="icon"
+      href="/assets/img/favicon.ico"
+      type="image/png"
+    />
+    <script src="/controllers/compartit.js" defer></script>
+  </head>
+  <body>
+    <div id="cabecera"></div>
+    <div class="contenidor">
+      <section>
+        <article>
+          <h3>Catalunya Sostenible</h3>
+          <p>
+            Som un espai dedicat a promoure un estil de vida respectuós amb el
+            nostre entorn. Apostem pel reciclatge conscient, l'ús eficient de
+            l'aigua i l'energia amb el suport als comerços de proximitat. Junts
+            podem construir un futur més verd i equilibrat per a tothom.
+          </p>
+        </article>
+        <img src="./assets/img/sostenible_tot.png" alt="reciclatge" />
+      </section>
 
-  <div id="cabecera"></div>
-  <div id="contenidor">
+      <section>
+        <img src="./assets/img/mapa.png" alt="mapa" />
+        <article>
+          <h3>Mapa Interactiu</h3>
+          <p>
+            Descobreix al mapa interactiu com Catalunya avança cap a la
+            sostenibilitat. En ell trobaràs dades municipals sobre el
+            reciclatge, el consum d'aigua i d'energia, així com informació dels
+            comerços de proximitat.
+          </p>
+          <a href="/pages/mapa.html">Visualitzar</a>
+        </article>
+      </section>
 
-    <div class="home_intro">
-        <img src="./assets/img/sostenible_tot.png" alt="reciclatge">
-        <h3>Catalunya Sostenible</h3>
-        <p>Som un espai dedicat a promoure un estil de vida respectuós amb el nostre entorn. 
-          Apostem pel reciclatge conscient, l'ús eficient de l'aigua i l'energia amb el suport als comerços de proximitat. 
-          Junts podem construir un futur més verd i equilibrat per a tothom.</p>
+      <section class="horizontal">
+        <article>
+          <div>
+            <h4>Curiositats</h4>
+            <div class="img-lateral">
+              <img src="/assets/img/logosabiesque.jpg" alt="sabiesQue" />
+              <p>
+                Sabries dir quins pobles són els que més reciclen i gasten menys
+                recursos d'aigua i energia?
+                <a href="/pages/curiositats.html">Descobreix</a>
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article>
+          <h4>ODS 12</h4>
+          <div class="img-lateral">
+            <img src="/assets/img/ods12.jpg" alt="ods12" />
+            <p>
+              Descobreix com accions com reciclar, estalviar aigua i energia, o
+              donar suport al comerç local poden transformar el nostre entorn.
+              <a href="/pages/ods12.html">Indaga</a>
+            </p>
+          </div>
+        </article>
+
+        <article>
+          <h4>Activitats</h4>
+          <div class="img-lateral">
+            <img src="/assets/img/jocs.jpg" alt="jocs" />
+            <p>
+              Participa en activitats per als més petits on podran iniciar-se en
+              el reciclatge i l'estalvi de recursos.
+              <a href="/pages/activitats.html">Participa</a>
+            </p>
+          </div>
+        </article>
+      </section>
     </div>
-
-    <div class="home_mapa">
-      <h3>Mapa Interactiu</h3>
-      <p>Descobreix al mapa interactiu com Catalunya avança cap a la sostenibilitat.
-        En ell trobaràs dades municipals sobre el reciclatge, el consum d'aigua i d'energia, així com informació dels comerços de proximitat.</p>
-      <img src="./assets/img/mapa.png" alt="mapa"> 
-    </div>
-
-    <div class="home_continguts_varis">
-      <div class="home_curiositats"></div>
-      <div class="home_ods12"></div>
-      <div class="home_activitats"></div>
-    </div>
-    <div class ="home_nosaltres">
-          <div class="home_quiSom"></div>
-    <div class="home_contacte"></div>
-    </div>
-
-  </div>
-  <div id="footer"></div>
-</body>
+    <div id="footer"></div>
+  </body>
 </html>
