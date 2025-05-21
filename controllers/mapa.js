@@ -25,3 +25,9 @@ fetch('/data/divisions-administratives-v2r1-comarques-100000-20250101.json')
         }).addTo(map);
     })
     .catch(error => console.error('Error cargando GeoJSON:', error));
+
+
+/* Marcar pagina en la que estem */
+setTimeout(() => {
+    document.querySelector('#link-mapa').classList.add('pagina-activa');
+}, 150);
