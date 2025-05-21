@@ -40,21 +40,6 @@ label {
   text-align: left;
 }
 
-button[type="submit"] {
-  height: 45px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-bottom: 20px;
-  margin-top: 10px;
-  text-transform: uppercase;
-  background-color: rgb(242, 154, 156);
-  border-color: rgb(142, 9, 9);
-  border-style: solid;
-  border-radius: 10px;
-  width: 420px;
-  cursor: pointer;
-}
-
 span {
   color: #99263d;
 }
@@ -88,6 +73,7 @@ p {
 
 .formulario {
   text-align: center;
+  padding-top: 30px;
 }
 .formulario h3 {
   text-align: left;
@@ -96,6 +82,7 @@ p {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  padding-top: 20px;
 }
 
 .contacto,
