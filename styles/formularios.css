@@ -1,0 +1,112 @@
+
+.contact_form {
+  width: 460px;
+  height: auto;
+  margin: 80px auto;
+  border-radius: 10px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  background-color: #fbfbfb;
+  padding-left: 30px;
+}
+
+input {
+  background-color: #fbfbfb;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 10px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 10px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  padding-top: 15px;
+}
+
+label {
+  display: block;
+  font-size: 20px;
+  text-align: left;
+}
+
+button[type="submit"] {
+  height: 45px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  background-color: rgb(242, 154, 156);
+  border-color: rgb(142, 9, 9);
+  border-style: solid;
+  border-radius: 10px;
+  width: 420px;
+  cursor: pointer;
+}
+
+span {
+  color: #99263d;
+}
+
+.aviso {
+  font-size: 13px;
+  color: #0e0e0e;
+}
+
+p {
+  font-size: 14px;
+}
+
+::-webkit-input-placeholder {
+  color: #a8a8a8;
+}
+
+::-webkit-textarea-placeholder {
+  color: #a8a8a8;
+}
+
+.formulario input:focus {
+  outline: 0;
+  border: 2px solid #97d848;
+}
+
+.formulario textarea:focus {
+  outline: 0;
+  border: 2px solid #97d848;
+}
+
+.formulario {
+  text-align: center;
+}
+.formulario h3 {
+  text-align: left;
+}
+.dosCols {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.contacto,
+.alta {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+label.requerido:after {
+  content: "*";
+  color: red;
+  font-size: 1.5rem;
+}

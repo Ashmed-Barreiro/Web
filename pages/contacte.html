@@ -1,19 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/js/scrips.js" defer></script>
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="shortcut icon" href="/img/CATALUNYA_SOSTENIBLE.png" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/controllers/compartit.js" defer></script>
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/formularios.css" />
+    <link rel="icon" href="./assets/img/favicon.ico" type="image/png" />
     <title>Catalunya Sostenible</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="cabecera"></div>
-    <div id="contenido"></div>
+    <div class="contenidor">
+      <div class="formulario">
+        <h3>Contacta amb nosaltres</h3>
+
+        <form action="submeter-formulario.php" method="post">
+          <div class="dosCols">
+            <p>
+              <label for="nombre" class="requerido"> Nom </label>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                required
+                placeholder="Escriu el teu nom"
+              />
+            </p>
+
+            <p>
+              <label for="email" class="requerido"> Email </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                placeholder="Escribe tu Email"
+              />
+            </p>
+
+            <p>
+              <label for="telefono">Telèfon</label>
+              <input
+                type="tel"
+                name="telefon"
+                id="telefon"
+                placeholder="Escriu el teu telèfon"
+              />
+            </p>
+
+            <p>
+              <label for="asunto" class="requerido">Assumpte </label>
+              <input
+                type="text"
+                name="asunto"
+                id="asunto"
+                required
+                placeholder="Escriu un assumpte"
+              />
+            </p>
+          </div>
+
+          <p>
+            <label for="mensaje" class="requerido">Missatge </label>
+            <textarea
+              name="mensaje"
+              id="mensaje"
+              required
+              placeholder="Deixa aquí el teu comentari..."
+            ></textarea>
+          </p>
+
+          <button type="submit" name="enviarFormulario" id="enviar">
+            Enviar
+          </button>
+        </form>
+      </div>
+    </div>
+
     <div id="footer"></div>
-    <script src="../js/scripts.js"></script>
-    </body>
-    </html>
+
+    <script
+      src="https://kit.fontawesome.com/d9dc805a20.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
