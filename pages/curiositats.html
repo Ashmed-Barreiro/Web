@@ -1,62 +1,77 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/controllers/compartit.js" defer></script>
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/formularios.css" />
+    <link rel="icon" href="./assets/img/favicon.ico" type="image/png" />
+    <title>Catalunya Sostenible</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="/js/scrips.js" defer></script>
-  <link rel="stylesheet" href="/styles/styles.css" />
-  <link rel="shortcut icon" href="/img/CATALUNYA_SOSTENIBLE.png" type="image/x-icon" />
-  <title>Galeria</title>
-</head>
+    <body>
+    <div id="cabecera"></div>
 
-<body>
-  <div class="cabecera">
-    <h1>Galeria</h1>
-    <header>
-      <nav>
-        <a href="/index.html" class="btn">Home 🏠</a>
-        <a href="/pages/galeria.html" class="btn">Photo 📷</a>
-        <a href="/pages/municipios.html" class="btn">Municipis 📍</a>
-      </nav>
-    </header>
-  </div>
+    <div class="contenidor">
+      <section class="curiositats">
+        <h3>Curiositats sobre la sostenibilitat a Catalunya</h3>
 
-  <main class="galeria-container">
-    <div class="galeria-item">
-      <p>Top comarques que més aigua reutilitzen a Catalunya</p>
-      <img src="/img/Top comarques amb més reutilització d'aigua (2024).png" alt="Reutilització de l’aigua a Catalunya" />
+        <p>
+          <strong>Reciclatge a Catalunya:</strong> Sabies que Catalunya recicla aproximadament un 45% dels residus
+          domèstics? L'objectiu europeu és arribar al 65% en els pròxims anys.
+        </p>
+
+        <p>
+          <strong>Estalvi d'aigua:</strong> Cada català consumeix de mitjana uns 130 litres d'aigua diaris, però amb
+          petits hàbits com tancar l'aixeta mentre es renta les dents, es pot reduir fins a un 20%.
+        </p>
+
+        <p>
+          <strong>Energia renovable:</strong> Catalunya produeix més del 50% de la seva energia a partir de fonts
+          renovables, principalment la hidroelèctrica i l'eòlica.
+        </p>
+
+        <p>
+           <strong>Comerços de proximitat:</strong> Comprar local ajuda a reduir fins a un 30% les emissions de CO₂
+          vinculades al transport dels productes.
+        </p>
+
+        <p>
+          <strong> Reciclar bé fa la diferència:</strong> No barrejar els residus i utilitzar correctament els contenidors
+          (orgànic, envasos, paper i vidre) pot augmentar l'eficiència del reciclatge fins a un 40%.
+        </p>
+      </section>
+
+      <section class="galeria_curiositats">
+        <h4>Informació rellevant</h4>
+        <div>
+          <p>Top comarques que més aigua reutilitzen a Catalunya</p>
+          <img src="../assets/grafics/Top comarques amb més reutilització d'aigua (2024).png" alt="Reutilització d'aigua a Catalunya" />
+        </div>
+
+        <div>
+          <p>Consum d'aigua per comarques a Catalunya</p>
+          <img src="../assets/grafics/grafico del consumo de agua por comarcas.png" alt="Consum d'aigua per comarques" />
+        </div>
+
+        <div>
+          <p>Comarques amb més consum domèstic</p>
+          <img src="../assets/grafics/Top  Comarques per consum domèstic per càpita (L por dia).png" alt="Comarques amb més consum domèstic" />
+        </div>
+
+        <div>
+          <p>Comarques amb més consum vs reutilització</p>
+          <img src="../assets/grafics/consum_vs_reutilitzacio.png" alt="Comarques que més gasten vs reutilitzen" />
+        </div>
+
+        <div>
+          <p>Percentatge de volum embassat als embassaments</p>
+          <img src="../assets/grafics/Percentatge de volum embassat als embassaments (10-05-2025).png" alt="Percentatge de volum embassat als embassaments" />
+        </div>
+      </section>
     </div>
-    <div class="galeria-item">
-      <p>Consum d’aigua per comarques a Catalunya</p>
-      <img src="/img/grafico del consumo de agua por comarcas.png" alt="Consum d’aigua per comarques" />
-    </div>
-    <div class="galeria-item">
-      <p>Comarques amb més consum domèstic</p>
-      <img src="/img/Top  Comarques per consum domèstic per càpita (L por dia).png" alt="Comarques amb més consum domèstic" />
-    </div>
-    <div class="galeria-item">
-        <p>Comarques amb més consum vs reutilització</p>
-        <img src="/img/consum_vs_reutilitzacio.png" alt="Comarques que mes gastan vs reutilitzan" />
-      </div>
-      <div class="galeria-item">
-        <p>Percentatge de volum embassat als embassaments</p>
-        <img src="/img//Percentatge de volum embassat als embassaments (10-05-2025).png" alt="Percentatge de volum embassat als embassaments" />
-      </div>
-  </main>
-</body>
+        <div id="footer"></div>
+  </body>
 
 </html>
-
-
-<!-- Curiositats sobre la sostenibilitat a Catalunya
-Reciclatge a Catalunya: Sabies que Catalunya recicla aproximadament un 45% dels residus domèstics? L’objectiu europeu és arribar al 65% en els pròxims anys.
-
-Estalvi d’aigua: Cada català consumeix de mitjana uns 130 litres d’aigua diaris, però amb petits hàbits com tancar l’aixeta mentre es renta les dents, es pot reduir fins a un 20%.
-
-Energia renovable: Catalunya produeix més del 50% de la seva energia a partir de fonts renovables, principalment la hidroelèctrica i l’eòlica.
-
-Comerços de proximitat: Comprar local ajuda a reduir fins a un 30% les emissions de CO₂ vinculades al transport dels productes.
-
-Reciclar bé fa la diferència: No barrejar els residus i utilitzar correctament els contenidors (orgànic, envasos, paper i vidre) pot augmentar l’eficiència del reciclatge fins a un 40%.           <p>
- -->
