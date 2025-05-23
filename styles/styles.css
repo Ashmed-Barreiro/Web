@@ -23,6 +23,9 @@ body {
 .contenidor {
   flex: 1;
 }
+body > .contenidor {
+    padding-bottom: 5rem;
+}
 
 /* Capsalera de la web */
 header {
@@ -145,15 +148,6 @@ body section.horizontal::before {
   z-index: -1;
 }
 
-#mapa {
-  border: 2px solid #a5d6a7;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  height: 600px;
-  min-width: 1200px;
-  max-width: 1200px;
-  margin-top: 20px;
-}
-
 /* Galería */
 .galeria-container {
   padding: 20px;
@@ -253,10 +247,15 @@ body section.horizontal::before {
   width: 100%;
   text-align: center;
 }
-#titol2-equip, h4{
+#titol2-equip, 
+h4,
+h5{
   font-size: 1.4rem;
   color: rgb(1, 103, 174);
   padding-bottom: 15px;
+}
+h5 {
+  font-size: 1.1rem;
 }
 .grup p{
   padding-bottom: 10px;
@@ -366,4 +365,10 @@ footer address {
   background-color: #f4fef4;
   border-left: 5px solid #4caf50;
   border-radius: 4px;
+  display: flex;
 }
+.ods-section h5,
+.ods-section p {
+  flex: 2;
+}
+

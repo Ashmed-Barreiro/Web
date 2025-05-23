@@ -1,0 +1,18 @@
+.contenidor-mapa {
+    display: flex;
+    align-items:start
+}
+
+.contenidor-mapa #list-municipis {
+    width: 400px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 600px;
+}
+
+#mapa {
+  border: 2px solid #a5d6a7;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  height: 600px;
+  width: 100%;
+}
