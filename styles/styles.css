@@ -7,8 +7,21 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.contenidor {
+  flex: 1;
 }
 
 /* Capsalera de la web */
@@ -40,13 +53,15 @@ header .contenidor .opcions .menu a {
   color: inherit;
   margin-right: 25px;
 }
-.logo{
+
+.logo {
   width: 200px;
   height: auto;
 }
 
 .pagina-activa {
-  color: #4caf50 !important; /* verd sostenible */
+  color: #4caf50 !important;
+  /* verd sostenible */
 }
 
 /* Cos de la WEB */
@@ -73,9 +88,10 @@ body section article {
   color: rgba(0, 0, 0, 0.87);
 }
 
- h3 {
+h3 {
   font-size: 1.8rem;
-  color: #4caf50; /* verd sostenible */
+  color: #4caf50;
+  /* verd sostenible */
   margin-bottom: 20px;
 }
 
@@ -161,6 +177,7 @@ body section.horizontal::before {
   border: 2px solid #c8e6c9;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+
 /*curiositats*/
 .curiositats {
   display: flex;
@@ -170,11 +187,14 @@ body section.horizontal::before {
   margin: auto;
   padding: 40px 20px;
 }
+
 .curiositats h5 {
   font-size: 2rem;
-  color: #4caf50; /* verd sostenible */
+  color: #4caf50;
+  /* verd sostenible */
   margin-bottom: 20px;
 }
+
 .curiositats p {
   font-size: 1.1rem;
   line-height: 1.6;
@@ -207,6 +227,62 @@ body section.horizontal::before {
   border: 2px solid #c8e6c9;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+
+/*quiSOm*/
+.intro-quiSom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  border-radius: 1rem;
+  line-height: 1.8;
+
+}
+#eslogan-equip{
+  color: #0b487e;
+  text-align: center;
+  font-size: 1.8rem;
+}
+.intro-quiSom>section {
+  display: block;
+}
+
+#titol-equip {
+  font-size: 2.1rem;
+  color: #4caf50;
+  width: 100%;
+  text-align: center;
+}
+#titol2-equip, h4{
+  font-size: 1.4rem;
+  color: rgb(1, 103, 174);
+  padding-bottom: 15px;
+}
+.grup p{
+  padding-bottom: 10px;
+  line-height: 1.4;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+
+.grup div {
+  text-align: center;        /* Centra el contenido horizontalmente */
+  padding: 10px;           /* Añade espacio interior */
+  margin: 10px;
+  border-radius: 1rem;
+  background-color: #f9f9f9; /* Opcional: fondo suave para mejor visual */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Opcional: sombra sutil */
+}
+
+.grup div img {
+  width: 175px;              /* Tamaño de imagen ajustado */
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;        /* Imagen circular */
+  margin-bottom: 1rem;
+}
+
 /*Botones*/
 
 .button {
@@ -229,6 +305,8 @@ body section.horizontal::before {
   padding: 0px;
   padding-left: 20px;
   padding-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   text-align: center;
   touch-action: manipulation;
   transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
@@ -238,7 +316,7 @@ body section.horizontal::before {
 }
 
 .button:hover,
-.button:focus { 
+.button:focus {
   background-color: #16437E;
   color: #ffffff;
 }
@@ -248,8 +326,31 @@ body section.horizontal::before {
   color: rgb(255, 255, 255, .7);
 }
 
-.button:disabled { 
+.button:disabled {
   cursor: not-allowed;
   background: rgba(0, 0, 0, .08);
   color: rgba(0, 0, 0, .3);
+}
+
+/*footer*/
+footer {
+  background-color: rgb(170, 123, 69);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
+
+footer ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+footer address {
+  font-style: normal;
+  text-align: center;
 }
