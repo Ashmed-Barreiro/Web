@@ -283,6 +283,12 @@ body section.horizontal::before {
   margin-bottom: 1rem;
 }
 
+/*activitats*/
+
+#intro-activitats{
+  display: inline;
+}
+
 /*Botones*/
 
 .button {
