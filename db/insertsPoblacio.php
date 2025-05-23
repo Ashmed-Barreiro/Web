@@ -71,25 +71,24 @@ if (($handle = fopen('../data/pmh446mun_2023_24.csv', 'r')) !== false) {
     fclose($handle);
 }
 
-// Mostrar l'array per comprovar que tot és correcte
-echo "<pre>";
-print_r($municipis);
-echo "</pre>";
+//var_dump($municipis[0]);
 
-/*
-// Preparar la consulta SQL per inserir dades
-$stmt = $db->prepare("INSERT INTO població 
-(any, municipi, codi_municipi, poblacio, codi_comarca, comarca)
-VALUES (:any, :municipi, :codi_municipi, :poblacio, :codi_comarca, :comarca)");
+foreach ($municipis as $municipi) {
 
-// Assignar els valors a cada paràmetre
-$stmt->bindValue(':any', $any, SQLITE3_INTEGER);
-$stmt->bindValue(':municipi', $municipi, SQLITE3_TEXT);
-$stmt->bindValue(':codi_municipi', $codi_municipi, SQLITE3_INTEGER);
-$stmt->bindValue(':poblacio', $poblacio, SQLITE3_INTEGER);
-$stmt->bindValue(':codi_comarca', $codi_comarca, SQLITE3_INTEGER);
-$stmt->bindValue(':comarca', $comarca, SQLITE3_TEXT);
+    // preparo la consulta
+    $stmt = $db->prepare("INSERT INTO poblacio
+    (any, municipi, codi_municipi, poblacio, codi_comarca, comarca)
+    VALUES (:any, :municipi, :codi_municipi, :poblacio, :codi_comarca, :comarca)");
 
-// Executar la inserció
-$stmt->execute();*/
-?>
+    // Assignar els valors a cada paràmetre
+    $stmt->bindValue(':any', $municipi['any'], SQLITE3_INTEGER);
+    $stmt->bindValue(':municipi', $municipi['municipi'], SQLITE3_TEXT);
+    $stmt->bindValue(':codi_municipi', $municipi['codi_municipi'], SQLITE3_INTEGER);
+    $stmt->bindValue(':poblacio', $municipi['poblacio'], SQLITE3_INTEGER);
+    $stmt->bindValue(':codi_comarca', $municipi['codi_comarca'], SQLITE3_INTEGER);
+    $stmt->bindValue(':comarca', $municipi['comarca'], SQLITE3_TEXT);
+
+    // Executar la inserció
+    $stmt->execute();
+
+}
