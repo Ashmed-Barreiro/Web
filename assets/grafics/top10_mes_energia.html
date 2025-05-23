@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TOP 10 municipis amb més consum energètic</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <h1>TOP 10 municipis amb més consum energètic</h1>
+    <canvas id="top1omesenergia" width="800" height="400"></canvas>
+
+    <script>
+        const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/8idm-becu.json?$select=municipi,consum_kwh&$where=any=2023&codi_sector=7";
+
+        async function fetchData() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+
+                // Processar les dades per obtenir la quantitat recollida per fracció
+                const municipis = {};
+                data.forEach(item => {
+                    const municipi = item.municipi;
+
+                    //TODO: per càpita
+                    const consum = Number(item.consum_kwh) || 0;
+
+                    municipis[municipi] = consum;
+
+                    //TODO: medinyà
+                });
+
+
+                let municipisArray = Object.entries(municipis);
+
+                //ordeno per consum
+                municipisArray.sort((a,b) => b[1] - a[1]);
+
+                //em quedo amb els 10 primers
+                top10_municipis = municipisArray.slice(0, 10);;                
+
+
+                // Preparar les dades per a la gràfica
+                let labels = [];
+                top10_municipis.forEach((municipi) => labels.push(municipi[0]));
+                console.log(labels)
+                let quantities = [];
+                top10_municipis.forEach((municipi) => quantities.push(municipi[1]));
+
+                // Crear la gràfica
+                const ctx = document.getElementById('top1omesenergia').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Consum energètic per càpita',
+                            data: quantities,
+                            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Consum(kWh)'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Municipis'
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error("Error en obtenir les dades:", error);
+            }
+        }
+
+        fetchData();
+    </script>
+</body>
+
+</html>
