@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>TOP 10 municipis amb més consum energètic</title>
+    <title>TOP 10 municipis amb menys consum energètic</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <h1>TOP 10 municipis amb més consum energètic</h1>
+    <h1>TOP 10 municipis amb menys consum energètic</h1>
     <canvas id="top1omesenergia" width="800" height="400"></canvas>
 
     <script>
@@ -60,7 +60,7 @@
                 let municipisArray = Object.entries(municipis);
 
                 //ordeno per consum
-                municipisArray.sort((a, b) => b[1] - a[1]);
+                municipisArray.sort((a, b) => a[1]-b[1]);
 
                 //em quedo amb els 10 primers
                 top10_municipis = municipisArray.slice(0, 10);;
@@ -80,7 +80,7 @@
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: 'Consum energètic per càpita',
+                            label: 'Consum energètic per càpita (kwh)',
                             data: quantities,
                             backgroundColor: 'rgba(54, 162, 235, 0.6)',
                             borderColor: 'rgba(54, 162, 235, 1)',

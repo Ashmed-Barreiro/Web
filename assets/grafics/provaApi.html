@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Prova</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <h1>Prova</h1>
+    <canvas id="top1omesenergia" width="800" height="400"></canvas>
+
+    <script>
+        const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/8idm-becu.json?$select=municipi,consum_kwh&$where=any=2023&codi_sector=7";
+
+        async function fetchData() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                console.log(data);
+
+            } catch (error) {
+                console.error("Error en obtenir les dades:", error);
+            }
+        }
+
+        fetchData();
+    </script>
+</body>
+
+</html>
