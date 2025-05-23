@@ -354,3 +354,10 @@ footer address {
   font-style: normal;
   text-align: center;
 }
+.ods-section {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f4fef4;
+  border-left: 5px solid #4caf50;
+  border-radius: 4px;
+}
