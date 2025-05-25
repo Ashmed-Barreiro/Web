@@ -66,14 +66,14 @@
                 top10_municipis = municipisArray.slice(0, 10);;
 
 
-                // Preparar les dades per a la gràfica
+                // Preparar les dades pel gràfic
                 let labels = [];
                 top10_municipis.forEach((municipi) => labels.push(municipi[0]));
                 console.log(labels)
                 let quantities = [];
                 top10_municipis.forEach((municipi) => quantities.push(municipi[1]));
 
-                // Crear la gràfica
+                // Crear el gràfic
                 const ctx = document.getElementById('top1omesenergia').getContext('2d');
                 new Chart(ctx, {
                     type: 'bar',

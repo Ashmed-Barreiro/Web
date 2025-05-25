@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Ús energètic per sectors</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Ús energètic per sectors (2023)</h1>
+    <canvas id="energiaSectors" width="800" height="400"></canvas>
+
+    <script>
+        const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/8idm-becu.json?$select=Descripcio_Sector,sum(consum_kwh)&$where=any=2023&$group=Descripcio_Sector";
+
+        async function fetchData() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                const sectors = {};
+                let total = 0;
+
+                data.forEach(sec => {
+                    const consum = Number(sec.sum_consum_kwh);
+                    const nomSector = sec.Descripcio_Sector;
+
+                    total += consum;
+                    sectors[nomSector] = consum;
+                });
+
+                // Convertim a percentatge
+                for (let sector in sectors) {
+                    sectors[sector] = ((sectors[sector] / total) * 100).toFixed(2);
+                }
+
+                const labels = Object.keys(sectors);
+                const quantities = Object.values(sectors);
+
+
+                //Creo el gràfic
+
+                // Defineixo els colors del gràfic
+                const backgroundColors = [
+                "#4e79a7", "#f28e2b", "#e15759", "#76b7b2",
+                "#59a14f", "#edc948", "#b07aa1", "#ff9da7",
+                "#9c755f", "#bab0ab"
+                ];
+
+                let colors = [];
+
+                for (let i = 0; i < labels.length; i++) {
+                    let color = backgroundColors[i]; // assigna color per posició
+                    colors.push(color);
+                }
+
+                const ctx = document.getElementById('energiaSectors').getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: '% ús energètic',
+                            data: quantities,
+                            backgroundColor: colors,
+                            borderColor: '#fff',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 20
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.parsed}%`;
+                                    }
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Distribució percentual de l\'ús energètic per sectors - 2023'
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error("Error en obtenir les dades:", error);
+            }
+        }
+
+        fetchData();
+    </script>
+</body>
+</html>
