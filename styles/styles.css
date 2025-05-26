@@ -20,6 +20,10 @@ body {
   min-height: 100vh;
 }
 
+a:hover{
+   color: #2670d1 !important;
+}
+
 .contenidor {
   flex: 1;
 }
@@ -253,7 +257,7 @@ body section.horizontal::before {
   line-height: 1.8;
 
 }
-#eslogan-equip{
+#eslogan-equip, .titol-jocs{
   color: #0b487e;
   text-align: center;
   font-size: 1.8rem;
@@ -302,12 +306,70 @@ h5 {
   border-radius: 50%;        /* Imagen circular */
   margin-bottom: 1rem;
 }
+/*ODS12*/
+
+.ods-section {
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: #f4fef4;
+  border-left: 5px solid #4caf50;
+  border-radius: 4px;
+  display: flex;
+}
+.ods-section h5,
+.ods-section p {
+  flex: 2;
+}
+
 
 /*activitats*/
 
-#intro-activitats{
+#intro-activitats{  
   display: inline;
 }
+
+#intro-activitats h3{
+  padding-top: 20px;
+}
+#intro-activitats p {
+ padding-bottom: 50px
+}
+
+.activitats-main {
+  padding: 20px;
+  scroll-snap-type: x mandatory; /* (opcional) para que cada artículo se alinee mejor al hacer scroll */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.activitats-main article {
+  flex: 0 0 300px;        /* Ancho fijo, no crece ni se encoge */
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.activitats-main img { 
+  width: 150px;              /* ancho fijo */
+  height: 150px;             /* alto fijo */
+  object-fit: cover;         /* recorta para llenar el espacio sin deformarse */
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: block; 
+}
+
+.activitats-main .jocs-activitats a {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  text-decoration: none;
+  place-items: center;
+}
+.activitats-main .jocs-activitats a p {
+  color: #000;
+  font-size: 1rem;
+}
+
 
 /*Botones*/
 
@@ -379,17 +441,5 @@ footer ul {
 footer address {
   font-style: normal;
   text-align: center;
-}
-.ods-section {
-  margin-top: 2rem;
-  padding: 1rem;
-  background-color: #f4fef4;
-  border-left: 5px solid #4caf50;
-  border-radius: 4px;
-  display: flex;
-}
-.ods-section h5,
-.ods-section p {
-  flex: 2;
 }
 
