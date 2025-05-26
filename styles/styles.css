@@ -174,12 +174,23 @@ body section.horizontal::before {
 
 /*curiositats*/
 .curiositats {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 60px; 
+  max-width: max-content;
   margin: auto;
-  padding: 40px 20px;
+}
+
+.curiositats > h3 {
+  grid-column: 1 / -1; /* Hace que el título ocupe ambas columnas */
+  text-align: center;
+}
+
+.curiositats > section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
 }
 
 .curiositats h5 {
@@ -192,6 +203,16 @@ body section.horizontal::before {
 .curiositats p {
   font-size: 1.1rem;
   line-height: 1.6;
+}
+
+.curiositats > section article {
+  width: 50%;
+}
+
+.curiositats > section img {
+  height: 250px;
+  width: auto;
+  border-radius: 50%;
 }
 
 .galeria_curiositats {
