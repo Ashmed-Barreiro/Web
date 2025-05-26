@@ -1,0 +1,21 @@
+
+body {
+    background-color: #f0fdf4;
+}
+h1, h2 {
+    color: #2e7d32;
+}
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.chart-container {
+    flex: 1 1 500px;
+    max-width: 600px;
+}
+.chart-container canvas {
+    max-height: 400px;
+}

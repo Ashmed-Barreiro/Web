@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <title>TOP 10 municipis amb més consum energètic</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../../styles/grafics.css">
 </head>
 
 <body>
-    <h1>TOP 10 municipis amb més consum energètic</h1>
-    <canvas id="top1omesenergia" width="800" height="400"></canvas>
-
+    <div class="chart-container">
+      <h2 class="text-center">TOP 10 municipis amb més consum energètic</h2>
+    <canvas id="percapitaTopChart"></canvas>
+    </div>
     <script>
         const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/8idm-becu.json?$select=municipi,consum_kwh,CDMUN&$where=any=2023&codi_sector=7";
         const apiPropiaUrl = "../../../api/poblacio.php"; //TODO: compte amb aquesta ruta
@@ -74,7 +76,7 @@
                 top10_municipis.forEach((municipi) => quantities.push(municipi[1]));
 
                 // Crear el gràfic
-                const ctx = document.getElementById('top1omesenergia').getContext('2d');
+                const ctx = document.getElementById('percapitaTopChart').getContext('2d');
                 new Chart(ctx, {
                     type: 'bar',
                     data: {
