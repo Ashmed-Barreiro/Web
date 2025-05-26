@@ -28,24 +28,29 @@ fetch('/data/divisions-administratives-v2r1-comarques-100000-20250101.json')
             onEachFeature: (feature, layer) => {
                 const nom = feature.properties.NOMCOMAR;
                 const cap = feature.properties.CAPCOMAR;
-                const codi = feature.properties.CODICOMAR;
+                const codi = Number(feature.properties.CODICOMAR);
 
                 layer.bindPopup(`<strong>${nom}</strong><br>Capital: ${cap}`);
 
                 /* Realizar una llamada a la API pasandole el codigo de la comarca para obtener
                 el listado de municipios de la comarca */
                 layer.on('click', () => {
-                    fetch(`http://localhost:3000/api/municipi.php?comarca=${codi}`)
+                    console.log(codi, nom);
+                    fetch(`../api/municipi.php?comarca=${codi}`)
                         .then(res => res.json())
                         .then(municipis => {
+                            let lista = document.getElementById('list-municipis').innerHTML=``;
+                            
                            /* TODO necesitamos modular todo el codigo en funciones reutilizables */
                             console.log('Municipis de la comarca', codi, municipis);
                             const ul = document.createElement('ul');
                             
                             municipis.forEach(municipi => {
-                                const li = document.createElement('li');
-                                li.textContent = municipi.municipi + ' - ' + municipi.codi_municipi;
-                                ul.appendChild(li);
+                                const codi_m = municipi.codi_municipi;
+                                const a = document.createElement('a');
+                                a.textContent = municipi.municipi + ' - ' + municipi.codi_municipi;
+                                a.href = `../pages/detallMunicipi.html?codi_municipi=${codi_m}`
+                                ul.appendChild(a);
                             });
 
                             document.querySelector('#list-municipis').appendChild(ul);

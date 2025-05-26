@@ -18,7 +18,7 @@ error_reporting(E_ALL);
             $resultats = $stmt->execute();
 
            while ($row = $resultats->fetchArray(SQLITE3_ASSOC)) {
-            $municipis[] = $row;
+                $municipis[] = $row;
             }
 
             header('Content-Type: application/json');
