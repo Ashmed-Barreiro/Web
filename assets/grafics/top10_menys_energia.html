@@ -24,7 +24,7 @@
                 //recorro dades i creo un diccionari (Map)
                 const poblacioMunicipis = {};
                 dataM.forEach(mun => {
-                    const codi = Number(String(mun.codi_municipi).slice(0, -1)); //li trec l'ultim dígit (així apareix a l'altre API)
+                    const codi = Number(mun.codi_municipi);
                     poblacioMunicipis[codi] = mun.poblacio;
                 });
 

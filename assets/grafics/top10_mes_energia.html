@@ -21,10 +21,10 @@
                 const responseM = await fetch(apiPropiaUrl);
                 const dataM = await responseM.json();
 
-                //recorro dades i creo un diccionari (Map)
+                //recorro dades i creo un objecte
                 const poblacioMunicipis = {};
                 dataM.forEach(mun => {
-                    const codi = Number(String(mun.codi_municipi).slice(0, -1)); //li trec l'ultim dígit (així apareix a l'altre API)
+                    const codi = Number(mun.codi_municipi);
                     poblacioMunicipis[codi] = mun.poblacio;
                 });
 

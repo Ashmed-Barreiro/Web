@@ -23,7 +23,7 @@ if (($handle = fopen('../data/mpiscatalunya.csv', 'r')) !== false) {
         if (count($row) < 4 || empty(trim($row[0]))) continue;
 
         // agafo dades del fitxer i el guardo a variables
-        $codi_municipi = intval($row[0]);
+        $codi_municipi = intval(substr($row[0], 0, -1));
         $nom_municipi = $row[1];
         $codi_comarca = intval($row[2]);
         $comarca = $row[3];

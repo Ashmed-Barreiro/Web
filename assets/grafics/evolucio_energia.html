@@ -1,1 +1,89 @@
 
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Estadístiques d'Energia</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <h1>Consum energètic Catalunya</h1>
+    <canvas id="residusChart" width="800" height="400">
+
+    </canvas>
+
+    <script>
+
+        const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/8idm-becu.json?$select=any,sum(consum_kwh)&$group=any";
+        
+        async function fetchData() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                console.log(data);
+
+                // Processar les dades per obtenir el consum energètic
+                const municipis = {};
+                data.forEach(item => {
+                    const any = item.any;
+
+                    const consum = Number(item.sum_consum_kwh);
+                    municipis[any] = consum;
+
+                });
+                console.log(municipis);
+
+
+                // Preparar les dades per a la gràfica
+                const labels = Object.keys(municipis);
+                console.log(labels)
+                const quantities = Object.values(municipis);
+
+                // Crear la gràfica
+                const ctx = document.getElementById('residusChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Consum (kWh)',
+                            data: quantities,
+                            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            tension: 0, //perquè les linies no siguin corbes
+                            fill: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Evolució del Consum Energètic a Catalunya'
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                title: {
+                                    display: true,
+                                    text: 'Any'
+                                }
+                            }
+                        }
+                    }
+                });
+
+            } catch (error) {
+                console.error("Error en obtenir les dades:", error);
+            }
+        }
+
+        fetchData();
+    </script>
+</body>
+
+</html>
