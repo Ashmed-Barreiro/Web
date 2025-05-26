@@ -50,6 +50,7 @@ if (($handle = fopen('../data/pmh446mun_2023_24.csv', 'r')) !== false) {
         // Saltar files buides o incompletes
         if (count($row) < 6 || empty(trim($row[0]))) continue;
 
+        //neteja de dades
         if($row[1] != "Medinyà" && $row[1] != "Catalunya") {
             if($row[2] == "total") {
             $any = intval($row[0]);
@@ -92,3 +93,6 @@ foreach ($municipis as $municipi) {
     $stmt->execute();
 
 }
+
+
+echo 'Inserts fets correctament';

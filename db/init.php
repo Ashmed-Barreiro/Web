@@ -24,7 +24,17 @@ $db->exec("CREATE TABLE IF NOT EXISTS poblacio (
     comarca TEXT NOT NULL
 )");
 
-echo "<p>✅ Taula 'poblacio' creada correctament a formularis.db</p>";
+$db->exec("CREATE TABLE consum (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    codi_municipi INTEGER NOT NULL,
+    any INTEGER NOT NULL,
+    tipus TEXT NOT NULL,       -- 'aigua', 'energia', 'residus'
+    unitat TEXT NOT NULL,      -- 'm3', 'kWh', 'kg', etc.
+    valor REAL DEFAULT 0       --(total)
+);");
+
+
+echo "Base de dades creada correctament</p>";
 ?>
 
 
