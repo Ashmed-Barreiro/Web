@@ -348,6 +348,7 @@ h5 {
   padding: 15px;
   border-radius: 10px;
   width: 100%;
+  border: 2px solid transparent;
 }
 
 .activitats-main img { 
@@ -370,6 +371,9 @@ h5 {
   font-size: 1rem;
 }
 
+.jocs-activitats:hover{
+  border: 2px solid #0A66C2;
+}
 
 /*Botones*/
 
@@ -419,7 +423,9 @@ h5 {
   background: rgba(0, 0, 0, .08);
   color: rgba(0, 0, 0, .3);
 }
-
+ul {
+  list-style: none;
+}
 /*footer*/
 footer {
   background-color: rgb(170, 123, 69);
