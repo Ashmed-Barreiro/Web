@@ -9,7 +9,12 @@
 <body>
     <div class="chart-container">
       <h2 class="text-center">Consum d'energia per sectors (2023)</h2>
-      <canvas id="energiaChart"></canvas>
+      <div class="chart-info">
+        <div style="flex-grow: 1;">
+            <canvas id="energiaChart" style="max-width: 600px; margin: auto;"></canvas>
+        </div>
+            
+      </div>
     </div>
     <script>
         const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/8idm-becu.json?$select=Descripcio_Sector,sum(consum_kwh)&$where=any=2023&$group=Descripcio_Sector";
@@ -70,6 +75,7 @@
                     },
                     options: {
                         responsive: true,
+                        maintainAspectRatio: false,
                         plugins: {
                             legend: {
                                 position: 'right',
@@ -83,10 +89,6 @@
                                         return `${context.label}: ${context.parsed}%`;
                                     }
                                 }
-                            },
-                            title: {
-                                display: true,
-                                text: 'Distribució percentual de l\'ús energètic per sectors - 2023'
                             }
                         }
                     }

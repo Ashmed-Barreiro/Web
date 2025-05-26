@@ -36,6 +36,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
       
 
+    } else if (isset($_GET['tipus']) && ($_GET['tipus'] == 'aigua' || $_GET['tipus'] == 'energia')) {
+        $consulta = "SELECT * FROM consum WHERE tipus = :tipus"; //TODO: hi  ha camps amb valor 0
+
+        //miro si vol un top 10
+        if(isset($_GET['limit']) && intval($_GET['limit']) > 0) {
+            $consulta.=" ORDER BY valor DESC LIMIT $_GET[limit]";
+        } else if (isset($_GET['limit']) && intval($_GET['limit']) < 0) {
+            $limit = intval($_GET['limit'])*-1;
+            $consulta.=" ORDER BY valor LIMIT $limit";
+        }
+
+        $stmt = $db->prepare($consulta);
+        $stmt->bindValue(":tipus", $_GET['tipus'], SQLITE3_TEXT);
+        $resultats = $stmt->execute();
+
+            while ($fila = $resultats->fetchArray(SQLITE3_ASSOC)) {
+            $municipi[] = $fila;
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($municipi);
     } else {
         
         $municipis = [];
