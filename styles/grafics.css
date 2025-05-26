@@ -9,6 +9,10 @@ h1, h2 {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: #2e7d32;
 }
+
+.aigua {
+    color: #2670d1;
+}
 .dashboard {
     display: flex;
     flex-wrap: wrap;
@@ -71,3 +75,4 @@ h1, h2 {
   max-width: 600px;
   display: block;
 }
+
