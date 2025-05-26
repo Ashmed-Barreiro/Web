@@ -10,6 +10,20 @@
     height: 600px;
 }
 
+#list-municipis {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  
+}
+
+#list-municipis a{
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.432);
+
+}
+
+
 #mapa {
   border: 2px solid #a5d6a7;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);

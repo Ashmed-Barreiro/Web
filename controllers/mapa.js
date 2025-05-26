@@ -39,21 +39,19 @@ fetch('/data/divisions-administratives-v2r1-comarques-100000-20250101.json')
                     fetch(`../api/municipi.php?comarca=${codi}`)
                         .then(res => res.json())
                         .then(municipis => {
-                            let lista = document.getElementById('list-municipis').innerHTML=``;
+                            document.getElementById('list-municipis').innerHTML=``;
                             
                            /* TODO necesitamos modular todo el codigo en funciones reutilizables */
                             console.log('Municipis de la comarca', codi, municipis);
-                            const ul = document.createElement('ul');
                             
                             municipis.forEach(municipi => {
                                 const codi_m = municipi.codi_municipi;
                                 const a = document.createElement('a');
-                                a.textContent = municipi.municipi + ' - ' + municipi.codi_municipi;
+                                a.textContent = municipi.municipi;
                                 a.href = `../pages/detallMunicipi.html?codi_municipi=${codi_m}`
-                                ul.appendChild(a);
+                                document.getElementById('list-municipis').appendChild(a);
                             });
 
-                            document.querySelector('#list-municipis').appendChild(ul);
                         })
                         .catch(err => {
                             console.error('Error obtenint municipis:', err);
