@@ -26,5 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
     for(let i of data){
     if(i.tipus=="aigua"){
     document.getElementById("aigua").textContent = "Consum d'aigua: "+ i.valor + "  " +i.unitat ;
-}}})
+  }
+  if(i.tipus=="energia"){
+    document.getElementById("energia").textContent= "Consum d'energia: " +i.valor + " "+i.unitat; 
+  }
+}})
 });
