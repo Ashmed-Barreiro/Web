@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if(isset($_GET['codi_municipi'])) {
         $municipi = [];
         
-        if(isset($_GET['tipus']) && ($_GET['tipus'] == 'aigua' || $_GET['tipus'] == 'energia')) { //TODO: afegir residus
+        if(isset($_GET['tipus']) && ($_GET['tipus'] == 'aigua' || $_GET['tipus'] == 'energia' || $_GET['tipus'] == 'reciclatge')) {
             $stmt = $db->prepare("SELECT * FROM consum WHERE tipus = :tipus");
             $stmt->bindValue(":codi_municipi", $_GET['codi_municipi'], SQLITE3_INTEGER);
             $stmt->bindValue(":tipus", $_GET['tipus'], SQLITE3_TEXT);
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
       
 
-    } else if (isset($_GET['tipus']) && ($_GET['tipus'] == 'aigua' || $_GET['tipus'] == 'energia')) {
+    } else if (isset($_GET['tipus']) && ($_GET['tipus'] == 'aigua' || $_GET['tipus'] == 'energia' || $_GET['tipus'] == 'reciclatge')) {
         $consulta = "SELECT * FROM consum WHERE tipus = :tipus"; //TODO: hi  ha camps amb valor 0
 
         //miro si vol un top 10
