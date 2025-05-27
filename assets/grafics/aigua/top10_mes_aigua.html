@@ -3,15 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>TOP 10 municipis que menys reciclen</title>
+    <title>TOP 10 municipis amb més consum d'aigua</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="../../styles/grafics.css">
+    <link rel="stylesheet" href="../../../styles/grafics.css">
 </head>
 
 <body>
     <div class="chart-container" style="display: flex;">
-        <h2 class="aigua">TOP 10 municipis que menys reciclen</h2>
+        <!--TODO: no aprareix títol-->
+        <h2 class="aigua">TOP 10 municipis amb més consum d'aigua</h2>
         <div class="chart-info">
+            <div class="selector-container">
+                <button id="btnCapita" class="selector-button active">Per càpita</button>
+                <button id="btnTotal" class="selector-button">Total</button>
+            </div>
+
             <div style="flex-grow: 1;">
                 <canvas id="energiaBottomChart"></canvas>
             </div>
@@ -20,15 +26,15 @@
     </div>
 
     <script>
-        const apiConsum = "../../../api/consum.php?tipus=reciclatge";
+        const apiConsum = "../../../api/consum.php?tipus=aigua";
         const apiPoblacio = "../../../api/poblacio.php"; //TODO: compte amb aquesta ruta
 
         let chart = null;
-        async function fetchData() {
+        async function fetchData(capita) {
             try {
 
                 const poblacioMunicipis = new Map();
-
+ 
                 //consumeixo API nostra (poblacio)
                 const responseM = await fetch(apiPoblacio);
                 const dataM = await responseM.json();
@@ -45,7 +51,7 @@
 
                     poblacioMunicipis.set(codi, [nomMunicipi, mun.poblacio]);
                 });
-
+        
 
                 //ara consumeixo API de consum
                 const response = await fetch(apiConsum);
@@ -54,19 +60,29 @@
 
                 const municipis = {};
                 data.forEach(mun => {
-                    let reciclatge = Number(mun.valor) || 0;
-                    let codi = mun.codi_municipi;
+
+                    const codi = Number(String(mun.codi_municipi));
+                    let consum = Number(mun.valor) || 0;
+
+                    if (capita && poblacioMunicipis.get(codi)) {
+
+                        if (poblacioMunicipis.get(codi)[1] > 0) {
+                            //calculo consum total i per càpita (amb dades de l'altre API)
+                            consum = consum / poblacioMunicipis.get(codi)[1];
+
+                        }
+                    }
 
                     //guardo les dades a l'objecte
                     if (poblacioMunicipis.get(codi))
-                        municipis[poblacioMunicipis.get(codi)[0]] = reciclatge;
+                        municipis[poblacioMunicipis.get(codi)[0]] = consum;
                 });
 
 
                 let municipisArray = Object.entries(municipis);
 
                 //ordeno per consum
-                municipisArray.sort((a, b) => a[1] - b[1]);
+                municipisArray.sort((a, b) => b[1] - a[1]);
 
                 //em quedo amb els 10 primers
                 top10_municipis = municipisArray.slice(0, 10);
@@ -85,7 +101,7 @@
 
 
                 // Crear el gràfic
-                let label = "Percentatge de reciclatge";
+                let label = capita == true ? "Consum d'aigua per càpita" : "Consum d'aigua total";
                 const ctx = document.getElementById('energiaBottomChart').getContext('2d');
                 chart = new Chart(ctx, {
                     type: 'bar',
@@ -94,8 +110,8 @@
                         datasets: [{
                             label: label,
                             data: quantities,
-                            backgroundColor: 'rgb(170, 123, 69)',
-                            borderColor: 'rgb(170, 123, 69)',
+                            backgroundColor: '#2670d1',
+                            borderColor: '#2670d1',
                             borderWidth: 1
                         }]
                     },
@@ -111,7 +127,7 @@
                                 beginAtZero: true,
                                 title: {
                                     display: true,
-                                    text: 'Reciclatge (%)'
+                                    text: 'Consum(m³/any)'
                                 }
                             }
                         }
@@ -122,10 +138,26 @@
             }
         }
 
-        //Percentatge de recollida selectiva sobre el total de residus municipals.
+        
+        // Botones eventos
+        document.getElementById('btnCapita').addEventListener('click', () => {
+            setActiveButton('btnCapita');
+            fetchData(true);
+        });
+        document.getElementById('btnTotal').addEventListener('click', () => {
+            setActiveButton('btnTotal');
+            fetchData(false);
+        });
 
+        function setActiveButton(activeId) {
+            document.getElementById('btnCapita').classList.remove('active');
+            document.getElementById('btnTotal').classList.remove('active');
+            document.getElementById(activeId).classList.add('active');
+        }
 
-        fetchData();
+        fetchData(true);
+        setActiveButton('btnCapita');
+
 
 
 
@@ -134,12 +166,6 @@
                 .toLowerCase()
                 .replace(/(^|\s|-|\/)([^\s\-\/])/g, (match, sep, char) => sep + char.toLocaleUpperCase('es-ES'));
         }
-        function formatejarNom(str) {
-            let article = str.split(",")[1] != undefined ? str.split(",")[1] : "";
-            let nom = article + " " + str.split(",")[0];
-            return nom.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
-        }
-
         fetchData(true);
     </script>
 </body>

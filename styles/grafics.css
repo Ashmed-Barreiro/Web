@@ -29,6 +29,7 @@ h1, h2 {
   max-width: 1000px;
 }
 
+
 .chart-info {
   display: flex;
   flex-direction: row;

@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>TOP 10 municipis amb menys consum energètic</title>
+    <title>TOP 10 municipis amb més consum energètic</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="../../styles/grafics.css">
+    <link rel="stylesheet" href="../../../styles/grafics.css">
 </head>
 
 <body>
     <div class="chart-container" style="display: flex;">
-        <h2>TOP 10 municipis amb menys consum energètic</h2>
+        <h2>TOP 10 municipis amb més consum energètic</h2>
         <div class="chart-info">
             <div class="selector-container">
                 <button id="btnCapita" class="selector-button active">Per càpita</button>
@@ -18,7 +18,7 @@
             </div>
 
             <div style="flex-grow: 1;">
-                <canvas id="energiaBottomChart"></canvas>
+                <canvas id="energiaTopChart"></canvas>
             </div>
         </div>
 
@@ -79,7 +79,7 @@
                 let municipisArray = Object.entries(municipis);
 
                 //ordeno per consum
-                municipisArray.sort((a, b) => a[1] - b[1]);
+                municipisArray.sort((a, b) => b[1] - a[1]);
 
                 //em quedo amb els 10 primers
                 top10_municipis = municipisArray.slice(0, 10);;
@@ -96,10 +96,9 @@
                     chart.destroy();
                 }
 
-                
                 // Crear el gràfic
                 let label = capita == true? 'Consum energètic per càpita' : 'Consum energètic total';
-                const ctx = document.getElementById('energiaBottomChart').getContext('2d');
+                const ctx = document.getElementById('energiaTopChart').getContext('2d');
                 chart = new Chart(ctx, {
                     type: 'bar',
                     data: {
