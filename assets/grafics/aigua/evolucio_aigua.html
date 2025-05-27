@@ -10,7 +10,7 @@
 
 <body>
     <div class="chart-container">
-        <h2 class="text-center">Evolució del Consum Energètic d'Ús Domèstic a Catalunya</h2>
+        <h2 class="text-center">Evolució del Consum d'Aigua d'Ús Domèstic a Catalunya</h2>
         <div class="chart-info">
             <div style="flex-grow: 1;">
                 <canvas id="evolucioChart" style="max-width: 600px; margin: auto;"></canvas>
@@ -22,7 +22,7 @@
 
     <script>
 
-        const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/8idm-becu.json?$select=any,sum(consum_kwh)&$group=any";
+        const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/2gws-ubmt.json?$select=any,sum(consum_dom_stic_per_c_pita)&$group=any";
 
         async function fetchData() {
             try {
@@ -36,7 +36,7 @@
                 data.forEach(item => {
                     const any = item.any;
 
-                    const consum = Number(item.sum_consum_kwh);
+                    const consum = Number(item.sum_consum_dom_stic_per_c_pita);
                     municipis[any] = consum;
 
                 });
@@ -55,10 +55,10 @@
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: 'Consum (kWh)',
+                            label: 'Consum per càpita (m3/any/hab)',
                             data: quantities,
-                            backgroundColor: '#ffb727',
-                            borderColor: '#ffb727',
+                            backgroundColor: '#2670d1',
+                            borderColor: '#2670d1',
                             tension: 0, //perquè les linies no siguin corbes
                             fill: 1
                         }]
@@ -68,7 +68,7 @@
                         plugins: {
                             title: {
                                 display: true,
-                                text: 'Evolució del Consum Energètic a Catalunya'
+                                text: "Evolució del Consum d'Aigua a Catalunya"
                             }
                         },
                         scales: {

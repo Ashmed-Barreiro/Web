@@ -90,6 +90,6 @@ setTimeout(() => {
 function toInitCap(str) {
     let article = str.split(",")[1] != undefined ? str.split(",")[1] : "";
     let nom =  article+ " " + str.split(",")[0];
-    return nom.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
+    return nom.toLowerCase().replace(/(^|\s|-|\/)([^\s\-\/])/g, (match, sep, char) => sep + char.toLocaleUpperCase('es-ES'));
 }
 
