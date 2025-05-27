@@ -68,7 +68,6 @@ fetch('/data/divisions-administratives-v2r1-comarques-100000-20250101.json')
                                 a.href = `../pages/detallMunicipi.html?codi_municipi=${codi_m}`
                                 document.getElementById('list-municipis').appendChild(a);
                             });
-
                         })
                         .catch(err => {
                             console.error('Error obtenint municipis:', err);
