@@ -26,8 +26,13 @@
 }
 
 .chartsContainers.active {
-  opacity: 1;
-  max-height: 2000px; /* lo suficientemente alto para tus gráficos */
+    flex-direction: column;
+    opacity: 1;
+    max-height: 2000px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .chart-btn.active {

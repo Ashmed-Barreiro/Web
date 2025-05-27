@@ -93,3 +93,4 @@ function toInitCap(str) {
     let nom =  article+ " " + str.split(",")[0];
     return nom.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
 }
+
