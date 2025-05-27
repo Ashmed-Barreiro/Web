@@ -405,6 +405,7 @@ h5 {
   user-select: none;
   -webkit-user-select: none;
   vertical-align: middle;
+  text-decoration: none;
 }
 
 .button:hover,
