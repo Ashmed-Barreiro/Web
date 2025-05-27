@@ -3,27 +3,18 @@
 }
 
 .galeria_curiositats button {
-    background-color: #2e7d32;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 0 5px;
-    font-size: 1rem;
-    font-family: 'Trebuchet MS', sans-serif;
-    border-radius: 6px;
-    cursor: pointer;
+
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 .galeria_curiositats button:hover {
-    background-color: #1b5e20;
+
     transform: translateY(-2px);
 }
 
 .galeria_curiositats button.active {
-    background-color: #81c784;
-    color: #1b5e20;
+
     font-weight: bold;
 }
 

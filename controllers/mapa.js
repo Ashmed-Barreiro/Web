@@ -7,7 +7,7 @@ const map = L.map('mapa', {
     boxZoom: false,          // Deshabilita zoom de selección
     keyboard: false,         // Deshabilita zoom con teclado
     touchZoom: false
-}).setView([41.8, 1.6], 8);
+}).setView([41.7, 1.6], 8);
 
 // Capa base de OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -64,7 +64,9 @@ fetch('/data/divisions-administratives-v2r1-comarques-100000-20250101.json')
                             municipis.forEach(municipi => {
                                 const codi_m = municipi.codi_municipi;
                                 const a = document.createElement('a');
-                                a.textContent = municipi.municipi;
+
+                                a.textContent = toInitCap(municipi.municipi);
+
                                 a.href = `../pages/detallMunicipi.html?codi_municipi=${codi_m}`
                                 document.getElementById('list-municipis').appendChild(a);
                             });
@@ -84,3 +86,10 @@ fetch('/data/divisions-administratives-v2r1-comarques-100000-20250101.json')
 setTimeout(() => {
     document.querySelector('#link-mapa').classList.add('pagina-activa');
 }, 150);
+
+
+function toInitCap(str) {
+    let article = str.split(",")[1] != undefined ? str.split(",")[1] : "";
+    let nom =  article+ " " + str.split(",")[0];
+    return nom.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
+}

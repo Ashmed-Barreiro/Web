@@ -9,7 +9,7 @@ error_reporting(E_ALL);
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         if(isset($_GET['comarca'])) {
             $municipis = [];
-            $stmt = $db->prepare("SELECT * FROM poblacio WHERE codi_comarca = :codi_comarca");
+            $stmt = $db->prepare("SELECT * FROM poblacio WHERE codi_comarca = :codi_comarca AND any = 2023");
             $stmt->bindValue(":codi_comarca", $_GET['comarca'], SQLITE3_INTEGER);
             $resultats = $stmt->execute();
 
