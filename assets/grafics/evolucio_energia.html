@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ca">
 
@@ -6,18 +5,25 @@
     <meta charset="UTF-8">
     <title>Estadístiques d'Energia</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../../styles/grafics.css">
 </head>
 
 <body>
-    <h1>Consum energètic Catalunya</h1>
-    <canvas id="residusChart" width="800" height="400">
+    <div class="chart-container">
+        <h2 class="text-center">Evolució del consum energètic a Catalunya</h2>
+        <div class="chart-info">
+            <div style="flex-grow: 1;">
+                <canvas id="evolucioChart" style="max-width: 600px; margin: auto;"></canvas>
+            </div>
+        </div>
+    </div>
 
     </canvas>
 
     <script>
 
         const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/8idm-becu.json?$select=any,sum(consum_kwh)&$group=any";
-        
+
         async function fetchData() {
             try {
                 const response = await fetch(apiUrl);
@@ -43,7 +49,7 @@
                 const quantities = Object.values(municipis);
 
                 // Crear la gràfica
-                const ctx = document.getElementById('residusChart').getContext('2d');
+                const ctx = document.getElementById('evolucioChart').getContext('2d');
                 new Chart(ctx, {
                     type: 'line',
                     data: {

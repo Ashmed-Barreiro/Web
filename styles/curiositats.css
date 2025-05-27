@@ -1,0 +1,47 @@
+.chartsContainers iframe {
+    width: 100%;
+}
+
+.galeria_curiositats button {
+
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.galeria_curiositats button:hover {
+
+    transform: translateY(-2px);
+}
+
+.galeria_curiositats button.active {
+
+    font-weight: bold;
+}
+
+.chartsContainers {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+
+.chartsContainers.active {
+    flex-direction: column;
+    opacity: 1;
+    max-height: 2000px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-btn.active {
+  background-color: #006400;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.energia {
+  color: #ffb727;
+}

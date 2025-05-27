@@ -9,27 +9,41 @@
 </head>
 
 <body>
-    <div class="chart-container">
-      <h2 class="text-center">TOP 10 municipis amb més consum energètic</h2>
-    <canvas id="percapitaTopChart"></canvas>
+    <div class="chart-container" style="display: flex;">
+        <h2>TOP 10 municipis amb més consum energètic</h2>
+        <div class="chart-info">
+            <div class="selector-container">
+                <button id="btnCapita" class="selector-button active">Per càpita</button>
+                <button id="btnTotal" class="selector-button">Total</button>
+            </div>
+
+            <div style="flex-grow: 1;">
+                <canvas id="energiaTopChart"></canvas>
+            </div>
+        </div>
+
     </div>
+
     <script>
         const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/8idm-becu.json?$select=municipi,consum_kwh,CDMUN&$where=any=2023&codi_sector=7";
         const apiPropiaUrl = "../../../api/poblacio.php"; //TODO: compte amb aquesta ruta
 
-        async function fetchData() {
+        let chart = null;
+        async function fetchData(capita) {
             try {
-                //consumeixo API nostra (poblacio)
-                const responseM = await fetch(apiPropiaUrl);
-                const dataM = await responseM.json();
 
-                //recorro dades i creo un objecte
                 const poblacioMunicipis = {};
-                dataM.forEach(mun => {
-                    const codi = Number(mun.codi_municipi);
-                    poblacioMunicipis[codi] = mun.poblacio;
-                });
+                if (capita) {
+                    //consumeixo API nostra (poblacio)
+                    const responseM = await fetch(apiPropiaUrl);
+                    const dataM = await responseM.json();
 
+                    //recorro dades i creo un objecte
+                    dataM.forEach(mun => {
+                        const codi = Number(mun.codi_municipi);
+                        poblacioMunicipis[codi] = mun.poblacio;
+                    });
+                }
 
                 //ara consumeixo API externa
                 const response = await fetch(apiUrl);
@@ -41,21 +55,24 @@
 
                     //guardo nom del municipi (article si en té)
                     let article = "";
-                    if(mun.municipi.split(",")[1]) {
-                        article = mun.municipi.split(",")[1]+" ";
+                    if (mun.municipi.split(",")[1]) {
+                        article = mun.municipi.split(",")[1] + " ";
                     }
-                    let municipi = article+mun.municipi.split(",")[0]; //faig split per teure determinant dels municipis
+                    let municipi = article + mun.municipi.split(",")[0]; //faig split per teure determinant dels municipis
 
 
 
                     const codi = Number(String(mun.CDMUN));
+                    let consum = Number(mun.consum_kwh) || 0;
 
-                    //calculo consum total i per càpita (amb dades de l'altre API)
-                    const consum_total = Number(mun.consum_kwh) || 0;
-                    const consum_capita = consum_total/poblacioMunicipis[codi];
+                    if (capita) {
+                        //calculo consum total i per càpita (amb dades de l'altre API)
+                        consum = consum / poblacioMunicipis[codi];
+                    }
 
-                    //guardo les dades al diccionari (la clau és el nom)
-                    municipis[municipi] = consum_capita;
+
+                    //guardo les dades a l'objecte
+                    municipis[municipi] = consum;
                 });
 
 
@@ -70,39 +87,43 @@
 
                 // Preparar les dades pel gràfic
                 let labels = [];
-                top10_municipis.forEach((municipi) => labels.push(municipi[0]));
+                top10_municipis.forEach((municipi) => labels.push(toInitCap(municipi[0])));
                 console.log(labels)
                 let quantities = [];
                 top10_municipis.forEach((municipi) => quantities.push(municipi[1]));
 
+                if (chart) {
+                    chart.destroy();
+                }
+
                 // Crear el gràfic
-                const ctx = document.getElementById('percapitaTopChart').getContext('2d');
-                new Chart(ctx, {
+                let label = capita == true? 'Consum energètic per càpita' : 'Consum energètic total';
+                const ctx = document.getElementById('energiaTopChart').getContext('2d');
+                chart = new Chart(ctx, {
                     type: 'bar',
                     data: {
                         labels: labels,
                         datasets: [{
-                            label: 'Consum energètic per càpita',
+                            label: label,
                             data: quantities,
-                            backgroundColor: 'rgba(54, 162, 235, 0.6)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
+                            backgroundColor: '#ffb727',
+                            borderColor: '#ffb727',
                             borderWidth: 1
                         }]
                     },
                     options: {
+                        indexAxis: 'y',
                         responsive: true,
+                        animation: {
+                            duration: 800,
+                            easing: 'easeInOutQuart'
+                        },
                         scales: {
-                            y: {
+                            x: {
                                 beginAtZero: true,
                                 title: {
                                     display: true,
                                     text: 'Consum(kWh)'
-                                }
-                            },
-                            x: {
-                                title: {
-                                    display: true,
-                                    text: 'Municipis'
                                 }
                             }
                         }
@@ -113,7 +134,31 @@
             }
         }
 
-        fetchData();
+        // Botones eventos
+        document.getElementById('btnCapita').addEventListener('click', () => {
+            setActiveButton('btnCapita');
+            fetchData(true);
+        });
+        document.getElementById('btnTotal').addEventListener('click', () => {
+            setActiveButton('btnTotal');
+            fetchData(false);
+        });
+
+        function setActiveButton(activeId) {
+            document.getElementById('btnCapita').classList.remove('active');
+            document.getElementById('btnTotal').classList.remove('active');
+            document.getElementById(activeId).classList.add('active');
+        }
+
+        fetchData(true);
+        setActiveButton('btnCapita');
+
+
+
+
+        function toInitCap(str) {
+            return str.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
+        }
     </script>
 </body>
 

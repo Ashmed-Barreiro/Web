@@ -6,117 +6,176 @@
     <script src="/controllers/compartit.js" defer></script>
     <link rel="stylesheet" href="/styles/styles.css" />
     <link rel="stylesheet" href="/styles/formularios.css" />
-    <link rel="icon" href="../assets/img/favicon.ico" type="image/png" />
+    <link rel="icon" href="./assets/img/favicon.ico" type="image/png" />
     <script src="../controllers/curiositats.js" defer></script>
     <title>Catalunya Sostenible</title>
   </head>
 
-  <body>
-    <div id="cabecera"></div>
+<body>
+  <div id="cabecera"></div>
 
-    <div class="contenidor">
-      <section class="curiositats">
-        <h3>La sostenibilitat a Catalunya</h3>
+  <div class="contenidor">
+    <section class="curiositats">
+      <h3>La sostenibilitat a Catalunya</h3>
 
-        <section>
-          <article>
-            <h4>Reciclatge</h4>
-            <p>
-              Catalunya recicla aproximadament un 45% dels residus domèstics.
-              L'objectiu europeu és arribar al 65% en els pròxims anys.
-            </p>
-          </article>
-          <img
-            src="../assets/img/recilar_mano.jpg"
-            alt="Reciclatge a Catalunya"
-          />
-        </section>
-
-        <section>
-          <img src="../assets/img/planeta_aigua.jpg" alt="Estalvi d'aigua" />
-          <article>
-            <h4>Estalvi d'aigua</h4>
-            <p>
-              Cada català consumeix de mitjana uns 130 litres d'aigua diaris,
-              però amb petits hàbits es pot reduir fins a un 20%.
-            </p>
-          </article>
-        </section>
-
-        <section>
-          <article>
-            <h4>Energia renovable</h4>
-            <p>
-              Catalunya produeix més del 50% de la seva energia a partir de
-              fonts renovables, principalment la hidroelèctrica i l'eòlica.
-            </p>
-          </article>
-          <img src="../assets/img/eolica.jpg" alt="Energia renovable" />
-        </section>
-
-        <section>
-          <img
-            src="../assets/img/local-produce.jpg"
-            alt="Comerços de proximitat"
-          />
-          <article>
-            <h4>Comerços de proximitat</h4>
-            <p>
-              Comprar local ajuda a reduir fins a un 30% les emissions de CO₂
-              vinculades al transport dels productes.
-            </p>
-          </article>
-        </section>
-
+      <section>
+        <article>
+          <h4>Reciclatge</h4>
+          <p>
+            Catalunya recicla aproximadament un 45% dels residus domèstics.
+            L'objectiu europeu és arribar al 65% en els pròxims anys.
+          </p>
+        </article>
+        <img src="../assets/img/recilar_mano.jpg" alt="Reciclatge a Catalunya" />
       </section>
 
-      <section class="galeria_curiositats">
-        <h3>Estadístiques a Catalunya</h3>
-        <div>
-          <h4>Top comarques que més aigua reutilitzen a Catalunya</h4>
-          <img
-            src="../assets/grafics/Top comarques amb més reutilització d'aigua (2024).png"
-            alt="Reutilització d'aigua a Catalunya"
-          />
-        </div>
-
-        <div>
-          <p>Consum d'aigua per comarques a Catalunya</p>
-          <img
-            src="../assets/grafics/grafico del consumo de agua por comarcas.png"
-            alt="Consum d'aigua per comarques"
-          />
-        </div>
-
-        <div>
-          <p>Comarques amb més consum domèstic</p>
-          <img
-            src="../assets/grafics/Top  Comarques per consum domèstic per càpita (L por dia).png"
-            alt="Comarques amb més consum domèstic"
-          />
-        </div>
-
-        <div>
-          <p>Comarques amb més consum vs reutilització</p>
-          <img
-            src="../assets/grafics/consum_vs_reutilitzacio.png"
-            alt="Comarques que més gasten vs reutilitzen"
-          />
-        </div>
-
-        <div>
-          <p>Percentatge de volum embassat als embassaments</p>
-          <img
-            src="../assets/grafics/Percentatge de volum embassat als embassaments (10-05-2025).png"
-            alt="Percentatge de volum embassat als embassaments"
-          />
-        </div>
+      <section>
+        <img src="../assets/img/planeta_aigua.jpg" alt="Estalvi d'aigua" />
+        <article>
+          <h4>Estalvi d'aigua</h4>
+          <p>
+            Cada català consumeix de mitjana uns 130 litres d'aigua diaris,
+            però amb petits hàbits es pot reduir fins a un 20%.
+          </p>
+        </article>
       </section>
-    </div>
-    <div id="footer"></div>
-    <script
-    src="https://kit.fontawesome.com/d9dc805a20.js"
-    crossorigin="anonymous"
-  ></script>
-  </body>
+
+      <section>
+        <article>
+          <h4>Energia renovable</h4>
+          <p>
+            Catalunya produeix més del 50% de la seva energia a partir de
+            fonts renovables, principalment la hidroelèctrica i l'eòlica.
+          </p>
+        </article>
+        <img src="../assets/img/eolica.jpg" alt="Energia renovable" />
+      </section>
+
+      <section>
+        <img src="../assets/img/local-produce.jpg" alt="Comerços de proximitat" />
+        <article>
+          <h4>Comerços de proximitat</h4>
+          <p>
+            Comprar local ajuda a reduir fins a un 30% les emissions de CO₂
+            vinculades al transport dels productes.
+          </p>
+        </article>
+      </section>
+
+    </section>
+
+    <section class="galeria_curiositats">
+      <h3>Estadístiques a Catalunya</h3>
+      <div>
+        <button class="button" onclick="clickChartBtn(event)" id="btn-aigua">AIGUA</button>
+        <button class="button" onclick="clickChartBtn(event)" id="btn-energia">ENERGIA</button>
+        <button class="button" onclick="clickChartBtn(event)" id="btn-reciclatge">RECICLATGE</button>
+      </div>
+
+
+
+
+      <div id="chart-energia" class="chartsContainers">
+        <iframe src="../assets/grafics/top10_menys_energia.html" width="100%" height="500"
+          style="border:none;"></iframe>
+        <iframe src="../assets/grafics/top10_mes_energia.html" width="100%" height="500" style="border:none;"></iframe>
+        <iframe src="../assets/grafics/energia_sectors.html" width="100%" height="700" style="border:none;"></iframe>
+        <iframe src="../assets/grafics/evolucio_energia.html" width="100%" height="700" style="border:none;"></iframe>
+      </div>
+
+      <div id="chart-aigua" class="chartsContainers">
+        <iframe src="../assets/grafics/top10_menys_aigua.html" width="100%" height="500" style="border:none;"></iframe>
+        <iframe src="../assets/grafics/top10_mes_aigua.html" width="100%" height="500" style="border:none;"></iframe>
+      </div>
+
+      <div id="chart-reciclatge" class="chartsContainers">
+        <iframe src="../assets/grafics/top10_menys_reciclatge.html" width="100%" height="500" style="border:none;"></iframe>
+        <iframe src="../assets/grafics/top10_mes_reciclatge.html" width="100%" height="500" style="border:none;"></iframe>
+      </div>
+
+
+    </section>
+  </div>
+  <div id="footer"></div>
+  <script src="https://kit.fontawesome.com/d9dc805a20.js" crossorigin="anonymous"></script>
+</body>
+
 </html>
+<script>
+  function clickChartBtn(event) {
+    const tipus = event.target.id.split("-")[1];
+    const activeChartId = `chart-${tipus}`;
+
+    // Activar visualment el botó seleccionat
+    setActiveButton(event.target.id);
+
+    // Amagar tots els gràfics
+    document.querySelectorAll(".chartsContainers").forEach((div) => {
+      if (div.id === activeChartId) {
+        div.classList.add("active");
+      } else {
+        div.classList.remove("active");
+      }
+    });
+
+    // Recarregar els iframes del contenidor visible
+    const divChart = document.getElementById(activeChartId);
+    if (divChart) {
+      divChart.querySelectorAll("iframe").forEach((iframe) => {
+        const src = iframe.src;
+        iframe.src = '';         // Netejar per forçar la recàrrega
+        iframe.src = src;
+      });
+    }
+  }
+
+  function setActiveButton(activeId) {
+    // Treure la classe activa de tots els botons
+    document.querySelectorAll(".chart-btn").forEach((btn) => {
+      btn.classList.remove("active");
+    });
+
+    // Afegir la classe activa al botó seleccionat
+    document.getElementById(activeId).classList.add("active");
+  }
+
+  // Quan es carrega la pàgina, amaguem tots els gràfics
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".chartsContainers").forEach((div) => {
+      div.classList.remove("active");
+    });
+  });
+</script>
+
+
+<!--
+
+<div>
+        <h4>Top comarques que més aigua reutilitzen a Catalunya</h4>
+        <img src="../assets/grafics/Top comarques amb més reutilització d'aigua (2024).png"
+          alt="Reutilització d'aigua a Catalunya" />
+      </div>
+
+      <div>
+        <p>Consum d'aigua per comarques a Catalunya</p>
+        <img src="../assets/grafics/grafico del consumo de agua por comarcas.png" alt="Consum d'aigua per comarques" />
+      </div>
+
+      <div>
+        <p>Comarques amb més consum domèstic</p>
+        <img src="../assets/grafics/Top  Comarques per consum domèstic per càpita (L por dia).png"
+          alt="Comarques amb més consum domèstic" />
+      </div>
+
+      <div>
+        <p>Comarques amb més consum vs reutilització</p>
+        <img src="../assets/grafics/consum_vs_reutilitzacio.png" alt="Comarques que més gasten vs reutilitzen" />
+      </div>
+
+      <div>
+        <p>Percentatge de volum embassat als embassaments</p>
+        <img src="../assets/grafics/Percentatge de volum embassat als embassaments (10-05-2025).png"
+          alt="Percentatge de volum embassat als embassaments" />
+      </div>
+
+-->
