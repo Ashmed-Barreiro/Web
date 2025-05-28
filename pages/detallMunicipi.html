@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <script src="/controllers/compartit.js" defer></script>
      <link rel="stylesheet" href="/styles/styles.css" />
+          <link rel="stylesheet" href="/styles/detallMunicipi.css" />
     <link
       rel="icon"
       href="../assets/img/favicon.ico"
@@ -16,53 +17,67 @@
 <body>
   <div id="cabecera"></div>
 
-<div class="contenidor" id="card-general">
+<div class="contenidor">
 
-  <section>
+  <section class="intro-municipi">
 
     <div >
       <h3 id="nom">Municipi:</h3>
     </div>
 
     <div class="">
-      <h2 id="comarca"><i class="fas fa-map-marker-alt"></i> Comarca:</h2>
+      <h2 id="comarca"> Comarca:</h2>
 
-      <h2 id="poblacio"><i class="fas fa-users"></i> Població:</h2>
+      <h2 id="poblacio"> Població:</h2>
     </div>
 
   </section>
 
   <section class="info-detall-municipi">
 
-    <h3>Consum domèstic per càpita:</h3>
+    <h3 id="title-consum">Consum domèstic per càpita:</h3>
 
-    <div class="grup">
-    <div class="info-box titol-animat">
-      <i class="fa-solid fa-water"></i>
-      <h5 id="aigua"><i class="fas fa-tint"></i> Consum d'aigua: </h5>
-    </div>
+    <div class="info-totals">
+      <div class="info-box titol-animat">
+        <i class="fa-solid fa-water"></i>
+        <h5 id="aigua"><i class="fas fa-tint"></i> Consum d'aigua: </h5>
+      </div>
 
-    <div class="info-box titol-animat">
-      <i class="fa-solid fa-plug"></i>
-      <h5 id="energia"><i class="fas fa-bolt"></i> Consum d'energia: </h5>
-    </div>
+      <div class="info-box titol-animat">
+        <i class="fa-solid fa-plug"></i>
+        <h5 id="energia"><i class="fas fa-bolt"></i> Consum d'energia: </h5>
+      </div>
 
       <div class="info-box titol-animat">
         <i class="fa-solid fa-recycle"></i> 
         <h5 id="residus"><i class=""></i> Residus:</h5>
+<<<<<<< HEAD
         <p id="totales"></p>
         <p id="resid"></p>
     </div>
+=======
+        <p>Totals:</p>
+        <p>Reciclats:</p>
+      </div>
+>>>>>>> 4a6248a (add styles detall municipi)
     </div>
 
   </section>
 
+<<<<<<< HEAD
   <section id="proximitat">
+=======
+  <section class="info-comersos">
+>>>>>>> 4a6248a (add styles detall municipi)
     <h3>Comerços de proximitat al municipi:</h3>
     
   </section>
 
+<<<<<<< HEAD
   <section>
+=======
+  <section class="info-comarques">
+>>>>>>> 4a6248a (add styles detall municipi)
     <h3> Municipis de la mateixa comarca:</h3>
     <div id="list-comarcas"></div>
   </section>
