@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const municipi = params.get("codi_municipi");
 
   if (municipi) {
+    //Datos del municipi
     fetch(`../api/poblacio.php?codi_municipi=${encodeURIComponent(municipi)}`)
       .then(response => response.json())
       .then(data => {
@@ -52,7 +53,28 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.warn("No s'ha trobat el paràmetre 'municipi' a la URL.");
   }
+    // Proximitat
+   fetch(`../api/consum.php?codi_municipi=${encodeURIComponent(municipi)}`)
+      .then(response => response.json())
+      .then(data => {
+        for (let i of data) {
+          if (i.tipus == "aigua") {
+            document.getElementById("aigua").textContent = "Consum d'aigua: " + i.valor + " " + i.unitat;
+          }
+          if (i.tipus == "energia") {
+            document.getElementById("energia").textContent = "Consum d'energia: " + i.valor + " " + i.unitat;
+          }
+        }
+      });
+  } else {
+    console.warn("No s'ha trobat el paràmetre 'municipi' a la URL.");
+  }
 
+  function toInitCap(str) {
+    let article = str.split(",")[1] != undefined ? str.split(",")[1] : "";
+    let nom =  article+ " " + str.split(",")[0];
+    return nom.toLowerCase().replace(/(^|\s|-|\/)([^\s\-\/])/g, (match, sep, char) => sep + char.toLocaleUpperCase('es-ES'));
+}
   // Animació d'entrada
   setTimeout(() => {
     document.querySelectorAll('.titol-animat').forEach(el => {
