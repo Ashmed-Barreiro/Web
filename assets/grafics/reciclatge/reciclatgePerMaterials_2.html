@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Recollida Selectiva per Fraccions (2023)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: 300px !important;
+            /* Gràfic més estret */
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Recollida Selectiva per Fraccions (2023)</h2>
+    <canvas id="recollidaChart"></canvas>
+
+    <script>
+const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/69zu-w48s.json?$where=any='2023'";
+
+async function fetchData() {
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    const fraccions = {
+      "Autocompostatge": 0,
+      "Orgànica": 0,
+      "Jardineria": 0,
+      "Paper/Cartró": 0,
+      "Vidre": 0,
+      "Envasos": 0,
+      "Fusta": 0,
+      "RAEE": 0,
+      "Ferralla": 0,
+      "Olis": 0,
+      "Tèxtil": 0,
+      "Runes": 0,
+      "Especials": 0,
+      "Piles": 0,
+      "Medicaments": 0,
+      "Altres": 0
+    };
+
+    data.forEach(item => {
+      fraccions["Autocompostatge"] += parseFloat(item.autocompostatge) || 0;
+      fraccions["Orgànica"] += parseFloat(item.mat_ria_org_nica) || 0;
+      fraccions["Jardineria"] += parseFloat(item.poda_i_jardineria) || 0;
+      fraccions["Paper/Cartró"] += parseFloat(item.paper_i_cartr) || 0;
+      fraccions["Vidre"] += parseFloat(item.vidre) || 0;
+      fraccions["Envasos"] += parseFloat(item.envasos_lleugers) || 0;
+      fraccions["Fusta"] += parseFloat(item.residus_voluminosos_fusta) || 0;
+      fraccions["RAEE"] += parseFloat(item.raee) || 0;
+      fraccions["Ferralla"] += parseFloat(item.ferralla) || 0;
+      fraccions["Olis"] += parseFloat(item.olis_vegetals) || 0;
+      fraccions["Tèxtil"] += parseFloat(item.t_xtil) || 0;
+      fraccions["Runes"] += parseFloat(item.runes) || 0;
+      fraccions["Especials"] += parseFloat(item.res_especials_en_petites) || 0;
+      fraccions["Piles"] += parseFloat(item.piles) || 0;
+      fraccions["Medicaments"] += parseFloat(item.medicaments) || 0;
+      fraccions["Altres"] += parseFloat(item.altres_recollides_selectives) || 0;
+    });
+
+    const labels = ["Total Recollida"];
+    const colors = [
+      "#4e79a7", "#f28e2b", "#e15759", "#76b7b2", "#59a14f",
+      "#edc948", "#b07aa1", "#ff9da7", "#9c755f", "#bab0ab",
+      "#8cd17d", "#b6992d", "#499894", "#d37295", "#fabfd2", "#c49c94"
+    ];
+
+    const datasets = Object.entries(fraccions).map(([key, value], i) => ({
+      label: key,
+      data: [value.toFixed(2)],
+      backgroundColor: colors[i % colors.length]
+    }));
+
+    const ctx = document.getElementById('recollidaChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: datasets
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              boxWidth: 15
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return `${context.dataset.label}: ${context.parsed.x} tones`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            stacked: true,
+            title: {
+              display: true,
+              text: 'Tones recollides'
+            },
+            grid: {
+              display: false
+            }
+          },
+          y: {
+            stacked: true,
+            grid: {
+              display: false
+            }
+          }
+        }
+      }
+    });
+  } catch (error) {
+    console.error("Error en obtenir les dades:", error);
+  }
+}
+
+fetchData();
+
+    </script>
+</body>
+
+</html>

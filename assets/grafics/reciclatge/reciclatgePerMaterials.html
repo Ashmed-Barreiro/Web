@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Percentatge de Reciclatge per Materials (2023)</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../../../styles/grafics.css">
+</head>
+
+<body>
+    <div class="chart-container">
+        <h2 class="text-center">Percentatge de Reciclatge per Materials a Catalunya (2023)</h2>
+        <div class="chart-info">
+            <div style="max-width: 600px; margin: auto;">
+                <canvas id="energiaChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script>
+        const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/69zu-w48s.json?$where=any='2023'&$limit=50000";
+
+        async function fetchData() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                // Inicialitzem els acumuladors per cada fracció
+                const fraccions = {
+                    "Autocompostatge": 0,
+                    "Matèria orgànica": 0,
+                    "Poda i jardineria": 0,
+                    "Paper i cartró": 0,
+                    "Vidre": 0,
+                    "Envasos lleugers": 0,
+                    "Voluminosos/fusta": 0,
+                    "RAEE": 0,
+                    "Ferralla": 0,
+                    "Olis vegetals": 0,
+                    "Tèxtil": 0,
+                    "Runes": 0,
+                    "Especials": 0,
+                    "Piles": 0,
+                    "Medicaments": 0,
+                    "Altres": 0
+                };
+
+                let totalRecollida = 0;
+
+                // Sumem totes les fraccions per tots els municipis
+                data.forEach(item => {
+                    fraccions["Autocompostatge"] += parseFloat(item.autocompostatge || 0);
+                    fraccions["Matèria orgànica"] += parseFloat(item.mat_ria_org_nica || 0);
+                    fraccions["Poda i jardineria"] += parseFloat(item.poda_i_jardineria || 0);
+                    fraccions["Paper i cartró"] += parseFloat(item.paper_i_cartr || 0);
+                    fraccions["Vidre"] += parseFloat(item.vidre || 0);
+                    fraccions["Envasos lleugers"] += parseFloat(item.envasos_lleugers || 0);
+                    fraccions["Voluminosos/fusta"] += parseFloat(item.residus_voluminosos_fusta || 0);
+                    fraccions["RAEE"] += parseFloat(item.raee || 0);
+                    fraccions["Ferralla"] += parseFloat(item.ferralla || 0);
+                    fraccions["Olis vegetals"] += parseFloat(item.olis_vegetals || 0);
+                    fraccions["Tèxtil"] += parseFloat(item.t_txtil || 0);
+                    fraccions["Runes"] += parseFloat(item.runes || 0);
+                    fraccions["Especials"] += parseFloat(item.res_especials_en_petites || 0);
+                    fraccions["Piles"] += parseFloat(item.piles || 0);
+                    fraccions["Medicaments"] += parseFloat(item.medicaments || 0);
+                    fraccions["Altres"] += parseFloat(item.altres_recollides_selectives || 0);
+
+                    totalRecollida += parseFloat(item.total_recollida_selectiva || 0);
+                });
+
+                if (totalRecollida === 0) {
+                    console.error("No hi ha dades totals de recollida selectiva.");
+                    return;
+                }
+
+                const labels = Object.keys(fraccions);
+                const dataPercent = labels.map(label => ((fraccions[label] / totalRecollida) * 100).toFixed(2));
+
+                const backgroundColors = [
+                    "#4e79a7", "#f28e2b", "#e15759", "#76b7b2", "#59a14f",
+                    "#edc948", "#b07aa1", "#ff9da7", "#9c755f", "#bab0ab",
+                    "#8cd17d", "#b6992d", "#d37295", "#fabfd2", "#79706e", "#bcbd22"
+                ];
+
+                const ctx = document.getElementById('energiaChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: '% reciclatge',
+                            data: dataPercent,
+                            backgroundColor: backgroundColors,
+                            borderColor: '#fff',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        layout: {
+                            padding: {
+                                right: 30  // añade espacio extra a la derecha del gráfico
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                maxHeight: 100,
+                                labels: {
+                                    boxWidth: 20
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function (context) {
+                                        return `${context.label}: ${context.parsed}%`;
+                                    }
+                                }
+                            },
+                            title: {
+                                display: false  // Aquí desactivas el título
+                            }
+                        }
+
+                    }
+
+                });
+
+            } catch (error) {
+                console.error("Error en obtenir les dades:", error);
+            }
+        }
+
+        fetchData();
+    </script>
+</body>
+
+</html>
