@@ -8,16 +8,12 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <link rel="stylesheet" href="./styles/styles.css" />
     <script src="../controllers/home.js" defer></script>
-    <link
-      rel="icon"
-      href="/assets/img/favicon.ico"
-      type="image/png"
-    />
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/png" />
     <script src="/controllers/compartit.js" defer></script>
   </head>
   <body>
     <div id="cabecera"></div>
-    <div class="contenidor">
+    <div class="contenidor pb-0">
       <section>
         <article>
           <h3>Catalunya Sostenible</h3>
@@ -31,7 +27,7 @@
         <img src="./assets/img/sostenible_tot.png" alt="reciclatge" />
       </section>
 
-      <section>
+      <section class="linea">
         <img src="./assets/img/mapa400.png" alt="mapa" />
         <article>
           <h3>Mapa Interactiu</h3>
@@ -41,55 +37,59 @@
             reciclatge, el consum d'aigua i d'energia, així com informació dels
             comerços de proximitat.
           </p>
-          <a href="/pages/mapa.html" class="button" >Visualitza</a>
+          <a href="/pages/mapa.html" class="button">Visualitza</a>
         </article>
       </section>
 
       <section class="horizontal">
         <article>
           <div>
-            <h4>Estadístiques</h4>
+            <a href="/pages/curiositats.html">
+            <h5>Estadístiques</h5>
+              <div class="img-lateral">
+                <img src="/assets/img/logosabiesque.jpg" alt="sabiesQue" />
+                <p>
+                  Sabries dir quins pobles són els que més reciclen i gasten
+                  menys recursos d'aigua i energia?
+                </p>
+              </div>
+            </a>
+          </div>
+        </article>
+
+        <article>
+          <a href="/pages/ods12.html">
+          <h5>ODS 12</h5>
             <div class="img-lateral">
-              <img src="/assets/img/logosabiesque.jpg" alt="sabiesQue" />
+              <img src="/assets/img/ods12.jpg" alt="ods12" />
               <p>
-                Sabries dir quins pobles són els que més reciclen i gasten menys
-                recursos d'aigua i energia?
-                <button class="button"  href="/pages/curiositats.html" role="button">Descobreix</button>
+                Descobreix com accions com reciclar, estalviar aigua i energia,
+                o donar suport al comerç local poden transformar el nostre
+                entorn.
               </p>
             </div>
-          </div>
+          </a>
         </article>
 
         <article>
-          <h4>ODS 12</h4>
-          <div class="img-lateral">
-            <img src="/assets/img/ods12.jpg" alt="ods12" />
-            <p>
-              Descobreix com accions com reciclar, estalviar aigua i energia, o
-              donar suport al comerç local poden transformar el nostre entorn.
-              <button class="button"   href="/pages/ods12.html" role="button">Indaga</button>
-            </p>
-          </div>
-        </article>
-
-        <article>
-          <h4>Activitats</h4>
-          <div class="img-lateral">
-            <img src="/assets/img/jocs.jpg" alt="jocs" />
-            <p>
-              Participa en activitats per als més petits on podran iniciar-se en
-              el reciclatge i l'estalvi de recursos.
-              <button class="button" href="/pages/activitats.html" role="button">Participa</button>
-            </p>
-          </div>
+          <a href="/pages/activitats.html">
+          <h5>Activitats</h5>
+            <div class="img-lateral">
+              <img src="/assets/img/jocs.jpg" alt="jocs" />
+              <p>
+                Participa en activitats per als més petits on podran iniciar-se
+                en el reciclatge i l'estalvi de recursos.
+              </p>
+            </div>
+          </a>
         </article>
       </section>
     </div>
-    
+
     <div id="footer"></div>
     <script
-    src="https://kit.fontawesome.com/d9dc805a20.js"
-    crossorigin="anonymous"
-  ></script>
+      src="https://kit.fontawesome.com/d9dc805a20.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

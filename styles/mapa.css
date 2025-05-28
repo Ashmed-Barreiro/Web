@@ -17,6 +17,11 @@
   
 }
 
+#list-municipis div:hover{
+  color:  #0b487e;
+  font-weight: bold;
+}
+
 #list-municipis a{
   text-decoration: none;
   color: rgba(0, 0, 0, 0.432);
@@ -29,4 +34,82 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   height: 600px;
   width: 100%;
+}
+
+
+.intro-municipi {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 0 5%;
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
+.info-detall-municipi{
+  padding: 2rem;
+  text-align: center;
+}
+
+.info-comersos h3{
+  padding: 2rem;
+  text-align: center;
+}
+
+.info-comarques h3{
+  padding: 2rem;
+  text-align: center;
+}
+
+.info-totals {
+  display: flex;
+  justify-content: center;
+  gap: 2rem; 
+  flex-wrap: wrap;
+}
+
+.info-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
+  text-align: center;  /* Centra el texto */
+  justify-content: center; /* Centra verticalmente si hay altura definida */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+
+
+.info-detall-municipi {
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#title-consum{
+    padding-top: 25px;
+    padding-bottom: 30px;
+}
+
+.titol-animat {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.6s ease-out;
+}
+
+.titol-animat.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2 i {
+  margin-right: 10px;
+  color: #388e3c;
 }
