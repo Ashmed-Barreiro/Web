@@ -1,6 +1,9 @@
 body {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2 {
@@ -9,13 +12,13 @@ h1, h2 {
   color: #2e7d32;
 }
 
-
 .dashboard {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
   margin-top: 2rem;
+  width: 100%;
 }
 
 .chart-container {
@@ -23,15 +26,18 @@ h1, h2 {
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  width: 100%;
   max-width: 1000px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
-
 
 .chart-info {
   display: flex;
   flex-direction: row;
   gap: 1rem;
   align-items: flex-start;
+  width: 100%;
 }
 
 /* Canvas Chart.js */
@@ -75,7 +81,7 @@ h1, h2 {
   background-color: #f1f8f4;
 }
 
-/* RESPONSIVE para móviles */
+/* Responsive */
 @media (max-width: 768px) {
   .chart-info {
     flex-direction: column;
@@ -97,13 +103,12 @@ h1, h2 {
   }
 }
 
-
 .espaiSuperior {
   padding-top: 30px;
 }
 
-
 .chart-wrapper {
+  position: relative;
   width: 100%;
   max-width: 600px;
   height: 400px;

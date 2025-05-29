@@ -3,6 +3,8 @@
   max-height: 0;
   overflow: hidden;
   transition: opacity 0.5s ease, max-height 0.5s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .chartsContainers.active {
@@ -15,12 +17,15 @@
   width: 100%;
 }
 
+/* Iframes que cargan los gráficos */
 .chartsContainers iframe {
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  max-height: 80vh;
+  height: 600px; /* o más si se necesita */
   border: none;
+  display: block;
+  max-height: none;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* Botones galeria curiositats */
@@ -37,7 +42,6 @@
   font-weight: bold;
 }
 
-/* Botones responsive */
 .galeria_curiositats > div:first-child {
   display: flex;
   flex-wrap: wrap;
@@ -48,19 +52,4 @@
 
 @media (max-width: 600px) {
   .galeria_curiositats > div:first-child .button {
-    width: 100%;
-    font-size: 1.1rem;
-  }
-}
-
-.chart-btn.active {
-  background-color: #006400;
-  color: white;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.energia {
-  color: #ffb727;
-}
-
+    width: 1
