@@ -1,31 +1,38 @@
+/* ---------- CONTENEDOR PRINCIPAL ---------- */
 .intro-municipi {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  padding: 0 5%; /* margen lateral para mejor responsividad */
-  width: 75%;
+  text-align: center;
+  padding: 2rem 1rem;
   margin: 0 auto;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  margin-top: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  background-color: #f0fdf4;
   border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-.info-detall-municipi{
-  padding: 2rem;
-  text-align: center;
+/* ---------- INFORMACIÓN GENERAL DEL MUNICIPI ---------- */
+.municipi-info h3,
+.municipi-info h4 {
+  margin: 0.5rem 0;
+  color: #2e7d32;
 }
 
-.info-comersos h3{
-  padding: 2rem;
-  text-align: center;
+/* ---------- TÍTULO DE SECCIONES ---------- */
+.titol-seccio,
+.info-comersos h3,
+.info-comarques h3,
+#title-consum {
+  font-size: 1.5rem;
+  color: #388e3c;
+  text-align: left;
+  margin: 2rem 2rem 1rem;
 }
 
-.info-comarques h3{
+/* ---------- SECCIÓN DE CONSUM ---------- */
+.info-detall-municipi {
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .info-totals {
@@ -38,40 +45,170 @@
 .info-box {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra horizontalmente */
-  text-align: center;  /* Centra el texto */
-  justify-content: center; /* Centra verticalmente si hay altura definida */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   background-color: #fff;
+  min-width: 240px;
 }
 
-
-.info-detall-municipi {
-    padding: 2rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+/* ---------- GRID DE PRODUCTORS ---------- */
+.grid-proximitat,
+.scroll-horizontal {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  scroll-snap-type: x mandatory;
 }
 
-#title-consum{
-    padding-top: 25px;
-    padding-bottom: 30px;
+.scroll-horizontal::-webkit-scrollbar {
+  height: 10px;
+}
+.scroll-horizontal::-webkit-scrollbar-thumb {
+  background-color: #4caf50;
+  border-radius: 8px;
+}
+.scroll-horizontal::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 8px;
 }
 
-.titol-animat {
-  opacity: 0;
-  transform: translateY(15px);
-  transition: all 0.6s ease-out;
+/* ---------- CARD DE PRODUCTOR ---------- */
+.card-productor {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.titol-animat.visible {
-  opacity: 1;
-  transform: translateY(0);
+.card-productor:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-h2 i {
-  margin-right: 10px;
+.card-productor h3 {
+  color: #2e7d32;
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.card-productor p {
+  font-size: 1rem;
+  margin: 0.4rem 0;
+  line-height: 1.4;
+  max-height: 4.8rem;
+  overflow-y: auto;
+}
+
+/* ---------- BOTÓN DE VER MÁS (opcional) ---------- */
+.btn-ver-mes {
+  margin: 0 auto 2rem;
+  display: block;
+  padding: 0.6rem 1.5rem;
+  background-color: #4caf50;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-ver-mes:hover {
+  background-color: #388e3c;
+}
+
+/* ---------- LISTADO DE MUNICIPIS COMARCA ---------- */
+#list-comarcas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+#list-comarcas a {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+#list-comarcas a:hover {
+  background-color: #c8e6c9;
+}
+.scroll-horizontal {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.scroll-horizontal::-webkit-scrollbar {
+  height: 10px;
+}
+.scroll-horizontal::-webkit-scrollbar-thumb {
+  background-color: #4caf50;
+  border-radius: 8px;
+}
+.scroll-horizontal::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 8px;
+}
+
+.card-productor {
+  flex: 0 0 320px;
+  scroll-snap-align: start;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-productor:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-productor h3 {
+  color: #2e7d32;
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.card-productor p {
+  font-size: 1rem;
+  margin: 0.4rem 0;
+  line-height: 1.4;
+  max-height: 4.8rem;
+  overflow-y: auto;
+}
+
+.titol-apartat {
+  font-size: 1.5rem;
   color: #388e3c;
+  text-align: left;
+  margin: 2rem 2rem 1rem;
 }
+
