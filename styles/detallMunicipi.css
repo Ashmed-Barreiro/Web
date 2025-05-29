@@ -1,19 +1,64 @@
 /* ---------- CONTENEDOR PRINCIPAL ---------- */
-.intro-municipi {
-  text-align: center;
-  padding: 2rem 1rem;
-  margin: 0 auto;
-  width: 80%;
-  background-color: #f0fdf4;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+.tarjeta-border-shadow {
+  box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03),
+    0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03),
+    0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05),
+    0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
+  border-width: 0;
 }
 
+.tarjeta-contenidor {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.tarjeta-contenidor .tarjeta-cos {
+  display: flex;
+  flex-direction: row;
+}
+.tarjeta-contenidor .tarjeta-cos .tarjeta-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.tarjeta-contenidor .tarjeta-cos .tarjeta-info i {
+  font-size: 2.5rem;
+}
+
+.intro-municipi {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  margin: 0 auto;
+  width: 100%;
+}
+.intro-municipi > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.intro-municipi h4 {
+  text-align: left;
+}
+
+i {
+  font-size: 2rem;
+}
 /* ---------- INFORMACIÓN GENERAL DEL MUNICIPI ---------- */
-.municipi-info h3,
-.municipi-info h4 {
-  margin: 0.5rem 0;
+.municipi-info {
   color: #2e7d32;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+  flex-wrap: wrap; /* permite que se bajen de línea si no caben */
+  width: 100%;
+  padding-top: 1rem;
+}
+
+.municipi-info > * {
+  flex: 1 1 0; /* permite que los elementos crezcan y se ajusten */
+  min-width: 0; /* evita que los elementos se desborden */
 }
 
 /* ---------- TÍTULO DE SECCIONES ---------- */
@@ -38,7 +83,7 @@
 .info-totals {
   display: flex;
   justify-content: center;
-  gap: 2rem; 
+  gap: 2rem;
   flex-wrap: wrap;
 }
 
@@ -50,7 +95,7 @@
   justify-content: center;
   padding: 15px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   min-width: 240px;
 }
@@ -212,3 +257,9 @@
   margin: 2rem 2rem 1rem;
 }
 
+.titol-tarjeta {
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.4);
+  text-align: left;
+  font-weight: 800;
+}

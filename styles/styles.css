@@ -14,7 +14,7 @@ body {
 }
 
 body {
-  background-color: #fff;
+  background: rgba(255, 255, 255, 0.45);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -33,6 +33,33 @@ body > .contenidor {
 
 .pb-0 {
   padding-bottom: 0 !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.f-17 {
+  font-size: 1.7rem;
+}
+
+.f-1 {
+  font-size: 1rem !important;
+}
+
+.texto-alineado-derecha {
+  text-align: right !important;
+}
+.texto-alineado-izquierda {
+  text-align: left !important;
+}
+.texto-alineado-centro {
+  text-align: center !important;
+}
+
+.color-principal {
+  color: #4caf50;
+  /* blau fosc */
 }
 
 /* Capsalera de la web */

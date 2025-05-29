@@ -1,57 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <script src="/controllers/compartit.js" defer></script>
-     <link rel="stylesheet" href="/styles/styles.css" />
-          <link rel="stylesheet" href="/styles/detallMunicipi.css" />
-    <link
-      rel="icon"
-      href="../assets/img/favicon.ico"
-      type="image/png"
-    />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="/controllers/compartit.js" defer></script>
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/detallMunicipi.css" />
+    <link rel="icon" href="../assets/img/favicon.ico" type="image/png" />
     <script src="/controllers/detallMunicipi.js" defer></script>
     <title>Detall Municipi</title>
-</head>
-<body>
-  <div id="cabecera"></div>
+  </head>
+  <body>
+    <div id="cabecera"></div>
 
-<div class="contenidor">
+    <div class="contenidor">
+      <section class="intro-municipi tarjeta-border-shadow">
+        <div class="titol-tarjeta">
+          Municipi:
+          <h4 id="nom" class="mb-0 pb-0 f-17 color-principal"></h4>
+        </div>
+        <div class="titol-tarjeta texto-alineado-centro">
+          Comarca:
+          <h4
+            id="comarca"
+            class="mb-0 pb-0 f-17 texto-alineado-centro color-principal"
+          ></h4>
+        </div>
+        <div class="titol-tarjeta texto-alineado-derecha">
+          Població:
+          <h4
+            id="poblacio"
+            class="mb-0 pb-0 f-17 texto-alineado-derecha color-principal"
+          ></h4>
+        </div>
+      </section>
 
-  <section class="intro-municipi">
-  <div class="municipi-info">
-    <h3 id="nom">Municipi:</h3>
-    <h4 id="comarca">Comarca:</h4>
-    <h4 id="poblacio">Població:</h4>
-  </div>
-</section>
+      <section class="intro-municipi tarjeta-border-shadow tarjeta-contenidor">
+        <div class="titol-tarjeta">Consum domèstic per càpita</div>
+        <div class="municipi-info tarjeta-cos">
+          <div class="tarjeta-info">
+            <i class="fa-solid fa-droplet" style="color: blue"></i>
+            <div>
+              <div class="titol-tarjeta f-1">Aigua</div>
+              <h4 id="aigua"></h4>
+            </div>
+          </div>
 
+          <div class="tarjeta-info">
+            <i class="fa-solid fa-plug" style="color: rgb(206, 191, 30)"></i>
+            <div>
+              <div class="titol-tarjeta f-1">Energia</div>
+              <h4 id="energia"></h4>
+            </div>
+          </div>
 
-  <section class="intro-municipi consum-percapita">
-  <div class="municipi-info">
-    <h3 id="title-consum">Consum domèstic per càpita</h3>
-    <h4 id="aigua">Consum d'aigua: ...</h4>
-    <h4 id="energia">Consum d'energia: ...</h4>
-    <h4 id="residus">Residus:</h4>
-    <p id="totales"></p>
-    <p id="resid"></p>
-  </div>
-</section>
+          <div class="tarjeta-info">
+            <i class="fa-solid fa-recycle" style="color: rgb(76, 175, 80)"></i>
+            <div>
+              <div class="titol-tarjeta f-1">Percentatges reciclat</div>
+              <h4 id="totales"></h4>
+            </div>
+          </div>
 
-<section class="info-comersos">
-  <h3 class="titol-apartat">Comerços de proximitat al municipi:</h3>
-  <div id="grid-proximitat" class="scroll-horizontal"></div>
-</section>
+          <div class="tarjeta-info">
+            <i class="fa-solid fa-trash" style="color: rgb(160, 130, 90)"></i>
+            <div>
+              <div class="titol-tarjeta f-1">Residus per habitant</div>
+              <h4 id="resid"></h4>
+            </div>
+          </div>
+        </div>
+      </section>
 
-<section class="info-comarques">
-  <h3 class="titol-apartat">Municipis de la mateixa comarca:</h3>
-  <div id="list-comarcas"></div>
-</section>
+      <section class="info-comersos">
+        <h3 class="titol-apartat">Comerços de proximitat al municipi:</h3>
+        <div id="grid-proximitat" class="scroll-horizontal"></div>
+      </section>
 
-</div>
- 
-<div id="footer"></div>
+      <section class="info-comarques">
+        <h3 class="titol-apartat">Municipis de la mateixa comarca:</h3>
+        <div id="list-comarcas"></div>
+      </section>
+    </div>
+
+    <div id="footer"></div>
     <script
       src="https://kit.fontawesome.com/d9dc805a20.js"
       crossorigin="anonymous"

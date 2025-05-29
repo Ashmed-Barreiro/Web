@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const comarca_codi = data.codi_comarca;
       const nom_municipi = data.municipi.split(",")[0].toUpperCase();
 
-      document.getElementById("nom").textContent = "Municipi: " + data.municipi;
-      document.getElementById("comarca").textContent = "Comarca: " + data.comarca;
-      document.getElementById("poblacio").textContent = "Població: " + data.poblacio + " hab.";
+      document.getElementById("nom").textContent = data.municipi;
+      document.getElementById("comarca").textContent = data.comarca;
+      document.getElementById("poblacio").textContent = data.poblacio + " hab.";
 
       // Municipis de la mateixa comarca
       fetch(`../api/municipi.php?comarca=${encodeURIComponent(comarca_codi)}`)
@@ -64,16 +64,16 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
           for (let i of data) {
             if (i.tipus == "aigua") {
-              document.getElementById("aigua").textContent = "Consum d'aigua: " + i.valor + " " + i.unitat;
+              document.getElementById("aigua").textContent = i.valor + " " + i.unitat;
             }
             if (i.tipus == "energia") {
-              document.getElementById("energia").textContent = "Consum d'energia: " + i.valor + " " + i.unitat;
+              document.getElementById("energia").textContent = i.valor + " " + i.unitat;
             }
             if (i.tipus == "reciclatge") {
-              document.getElementById("totales").textContent = "Total reciclat: " + i.valor + " " + i.unitat;
+              document.getElementById("totales").textContent = i.valor + " " + i.unitat;
             }
             if (i.tipus == "residus") {
-              document.getElementById("resid").textContent = "Total de residus: " + i.valor + " " + i.unitat;
+              document.getElementById("resid").textContent = i.valor + " " + i.unitat;
             }
           }
         });
