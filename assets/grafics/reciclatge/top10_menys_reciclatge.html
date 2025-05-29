@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>TOP 10 municipis que menys reciclen</title>
+    <title>TOP 10 Municipis que MENYS Reciclen</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../../../styles/grafics.css">
 </head>
 
 <body>
     <div class="chart-container" style="display: flex;">
-        <h2 class="aigua">TOP 10 municipis que menys reciclen</h2>
+        <h2 class="residu">TOP 10 Municipis que MENYS Reciclen</h2>
         <div class="chart-info">
             <div style="flex-grow: 1;">
                 <canvas id="energiaBottomChart"></canvas>
@@ -94,8 +94,8 @@
                         datasets: [{
                             label: label,
                             data: quantities,
-                            backgroundColor: 'rgb(170, 123, 69)',
-                            borderColor: 'rgb(170, 123, 69)',
+                            backgroundColor: 'rgb(170, 123, 69, 0.8)',
+                            borderColor: 'rgb(170, 123, 69, 0.8)',
                             borderWidth: 1
                         }]
                     },
