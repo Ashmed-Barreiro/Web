@@ -49,9 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
       card.className = "card-productor";
       card.innerHTML = `
         <h3>${productor.nom_productor}</h3>
-        <p><strong>Productes:</strong> ${productor.productes || "No especificat"}</p>
-        <p><strong>Telèfon:</strong> ${productor.tel_fon || "No disponible"}</p>
-        <p><strong>Correu:</strong> ${productor.correu || "No disponible"}</p>
+        <p><i class="fa-solid fa-cart-shopping icon-style-productes"></i> ${productor.productes || "No especificat"}</p>
+        <p><i class="fa-solid fa-phone icon-style-productes"></i> ${productor.tel_fon || "No disponible"}</p>
+        <p><i class="fa-solid fa-envelope icon-style-productes"></i> ${productor.correu || "No disponible"}</p>
         ${productor.marca_comercial ? `<p><strong>Marca comercial:</strong> ${productor.marca_comercial}</p>` : ""}
       `;
       div.appendChild(card);
