@@ -62,6 +62,11 @@ body > .contenidor {
   /* blau fosc */
 }
 
+.color-danger {
+  color: red;
+  /* blau fosc */
+}
+
 /* Capsalera de la web */
 header {
   padding: 10px 0;
