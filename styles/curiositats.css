@@ -15,6 +15,8 @@
   opacity: 1;
   max-height: 2000px;
   width: 100%;
+
+  overflow: hidden;
 }
 
 /* Iframes que cargan los gráficos */
@@ -24,9 +26,11 @@
   border: none;
   display: block;
   max-height: none;
-  overflow: hidden;
+
   box-sizing: border-box;
+  overflow: hidden !important;
 }
+
 
 /* Botones galeria curiositats */
 .galeria_curiositats button {
@@ -53,3 +57,5 @@
 @media (max-width: 600px) {
   .galeria_curiositats > div:first-child .button {
     width: 1
+  }
+}

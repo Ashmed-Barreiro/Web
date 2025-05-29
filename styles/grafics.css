@@ -45,6 +45,8 @@ h1, h2 {
   width: 100% !important;
   height: auto !important;
   max-height: 400px;
+
+  overflow: hidden;
 }
 
 /* Botones selector */
