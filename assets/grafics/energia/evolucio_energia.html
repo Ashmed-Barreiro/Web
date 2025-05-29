@@ -22,7 +22,7 @@
 
     <script>
 
-        const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/8idm-becu.json?$select=any,sum(consum_kwh)&$group=any";
+        const apiUrl = "https://analisi.transparenciacatalunya.cat/resource/8idm-becu.json?$select=any,sum(consum_kwh)&$where=codi_sector=%227%22&$group=any";
 
         async function fetchData() {
             try {

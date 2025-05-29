@@ -11,7 +11,7 @@
 <body>
     <div class="chart-container" style="display: flex;">
         <!--TODO: no aprareix títol-->
-        <h2 class="aigua">Municipis amb MÉS Consum d'Aigua</h2>
+        <h2 class="aigua">Municipis amb MÉS Consum d'Aigua (2023)</h2>
         <div class="chart-info">
             <div class="selector-container">
                 <button id="btnCapita" class="selector-button active">Per càpita</button>
@@ -26,6 +26,7 @@
     </div>
 
     <script>
+        const any = 2023;
         const apiConsum = "../../../api/consum.php?tipus=aigua";
         const apiPoblacio = "../../../api/poblacio.php"; //TODO: compte amb aquesta ruta
 
@@ -110,8 +111,8 @@
                         datasets: [{
                             label: label,
                             data: quantities,
-                            backgroundColor: 'rgba(38, 112, 209, 0.6)',
-                            borderColor: '#2670d1',
+                            backgroundColor: 'rgba(38, 112, 209, 1)',
+                            borderColor: 'rgba(38, 112, 209, 1)',
                             borderWidth: 1
                         }]
                     },
